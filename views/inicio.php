@@ -20,10 +20,10 @@
 
             <nav class="navbar">
                 <ul>
-                    <li><a href="#">Nosotros</a></1i>
+                    <li><a href="nosotros.php">Nosotros</a></1i>
                     <li><a href="#">Pe1icu1as</a></1i>
                     <li><a href="#">Contacto</a></1i>
-                    <li><a href="#">Preguntas</a></1i>
+                    <li><a href="preguntas.php">Preguntas</a></1i>
                 </ul>
             </nav>
             <a href="login.php" class="btn-l">Login</a>

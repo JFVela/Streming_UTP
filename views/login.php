@@ -44,7 +44,7 @@
 
                                         <div class="d-flex align-items-center justify-content-center pb-4">
                                             <p class="mb-0 me-2">No tienes una cuenta?</p>
-                                            <button type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-outline-danger">Registrate</button>
+                                            <a href="createLogin.php" type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-outline-danger">Registrate</a>
                                         </div>
 
                                     </form>
