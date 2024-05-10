@@ -8,15 +8,21 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/2.0.7/css/dataTables.bootstrap5.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="../../assents/css/movie_list.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body>
     <h1 class="text-center">Peliculas</h1>
     <div class="container-fluid">
         <div class="row justify-content-between">
-            <form class="col-md-5 p-3">
+            <form class="col-md-5 p-3 mx-auto" method="post">
                 <fieldset>
                     <legend class="text-center text-secondary">Registrar peliculas</legend>
+                    <?php
+                    include "../../config/conexion.php";
+                    include "../../controllers/admin/CreateMovie.php";
+                    ?>
                     <div class="mb-3">
                         <label for="titulo" class="form-label">Título de la película</label>
                         <input type="text" id="titulo" name="titulo" class="form-control" placeholder="Ingrese el título" required maxlength="100">
@@ -61,22 +67,20 @@
                             Por favor, ingrese el nombre del director de la película.
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-success" name="btnRegistrar" value="ok">Submit</button>
                 </fieldset>
             </form>
-            <div class="col-md-6 p-3">
+            <div class="col-md-6 p-3 table-container mx-auto">
                 <table id="example" class="table table-striped" style="width:100%">
                     <thead>
                         <tr>
-                            <th>ID</th>
+                            <th>Id</th>
                             <th>Title</th>
-                            <th>Desc</th>
                             <th>Year</th>
-                            <th>Durat</th>
-                            <th>URL</th>
-                            <th>Dir</th>
-                            <th>Edit</th>
-                            <th>Delete</th>
+                            <th>Duration</th>
+                            <th>Director</th>
+                            <th></th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -88,16 +92,17 @@
                             <tr>
                                 <td><?= $datos->idMovie ?></td>
                                 <td><?= $datos->titulo ?></td>
-                                <td><?= $datos->descripcion ?></td>
                                 <td><?= $datos->año ?></td>
                                 <td><?= $datos->duracion ?></td>
-                                <td><?= $datos->url ?></td>
                                 <td><?= $datos->director ?></td>
                                 <td>
-                                    <a href="" class="btn btn-small btn-danger"><i class="bi bi-pencil-square"></i></a>
+                                    <button type="button" class="btn btn-small btn-warning editBtn" data-bs-toggle="modal" data-bs-target="#editModal" data-id="<?= $datos->idMovie ?>">
+                                        <i class="bi bi-pencil-square"></i>
+                                    </button>
                                 </td>
+
                                 <td>
-                                    <a href="" class="btn btn-small btn-success"><i class="bi bi-file-earmark-x"></i></a>
+                                    <a href="" class="btn btn-small btn-danger"><i class="bi bi-file-earmark-x"></i></a>
                                 </td>
                             </tr>
                         <?php
@@ -106,13 +111,11 @@
                     </tbody>
                     <tfoot>
                         <tr>
-                            <th>ID</th>
+                            <th>Id</th>
                             <th>Title</th>
-                            <th>Desc</th>
                             <th>Year</th>
-                            <th>Durat</th>
-                            <th>URL</th>
-                            <th>Dir</th>
+                            <th>Duration</th>
+                            <th>Director</th>
                             <th>Edit</th>
                             <th>Delete</th>
                         </tr>
@@ -121,6 +124,51 @@
             </div>
         </div>
     </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editModalLabel">Editar Película</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form id="updateForm" action="update_movie.php" method="post">
+                    <input type="hidden" name="id" value="<?= $datos->idMovie ?>">
+                    <div class="mb-3">
+                        <label for="titulo" class="form-label">Título de la película</label>
+                        <input type="text" id="titulo" name="titulo" class="form-control" value="<?= $datos->titulo ?>" required maxlength="100">
+                    </div>
+                    <div class="mb-3">
+                        <label for="descripcion" class="form-label">Descripción</label>
+                        <textarea id="descripcion" name="descripcion" class="form-control" required><?= $datos->descripcion ?></textarea>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="anio" class="form-label">Año</label>
+                            <input type="number" id="anio" name="anio" class="form-control" value="<?= $datos->año ?>" min="1888" max="9999" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="duracion" class="form-label">Duración (HH:MM:SS)</label>
+                            <input type="text" id="duracion" name="duracion" class="form-control" value="<?= $datos->duracion ?>" pattern="[0-9]{2}:[0-5][0-9]:[0-5][0-9]" required>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="url" class="form-label">URL de la película</label>
+                        <input type="url" id="url" name="url" class="form-control" value="<?= $datos->url ?>" maxlength="255" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="director" class="form-label">Director</label>
+                        <input type="text" id="director" name="director" class="form-control" value="<?= $datos->director ?>" maxlength="100" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary" name="btnActualizar">Actualizar</button>
+                </form>
+                <div class="modal-body">
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- jQuery -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <!-- DataTables -->
@@ -129,6 +177,29 @@
     <!-- Bootstrap Bundle -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 
+    <script>
+        $(document).ready(function() {
+            // Cuando se haga clic en el botón de editar
+            $('.editBtn').click(function() {
+                // Obtener el ID de la película
+                var id = $(this).data('id');
+                // Realizar una petición AJAX para obtener el formulario de actualización
+                $.ajax({
+                    url: '../../controllers/admin/UpdateMovie.php', // Ruta al script que obtiene el formulario de actualización
+                    method: 'POST',
+                    data: {
+                        id: id
+                    },
+                    success: function(response) {
+                        // Insertar el formulario de actualización en el cuerpo del modal
+                        $('.modal-body').html(response);
+                        // Mostrar el modal
+                        $('#editModal').modal('show');
+                    }
+                });
+            });
+        });
+    </script>
     <script>
         $(document).ready(function() {
             $('#example').DataTable();
@@ -143,6 +214,7 @@
             }
         });
     </script>
+
 </body>
 
 </html>
