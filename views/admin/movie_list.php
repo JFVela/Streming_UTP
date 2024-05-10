@@ -7,6 +7,7 @@
     <title>Movies</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/2.0.7/css/dataTables.bootstrap5.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 
 <body>
@@ -65,7 +66,7 @@
             </form>
             <div class="col-md-6 p-3">
                 <table id="example" class="table table-striped" style="width:100%">
-                    <thead class="bg-info">
+                    <thead>
                         <tr>
                             <th>ID</th>
                             <th>Title</th>
@@ -79,7 +80,29 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <!-- Your table body content -->
+                        <?php
+                        include "../../config/conexion.php";
+                        $sql = $conexion->query("SELECT * FROM cineandes.movie");
+                        while ($datos = $sql->fetch_object()) {
+                        ?>
+                            <tr>
+                                <td><?= $datos->idMovie ?></td>
+                                <td><?= $datos->titulo ?></td>
+                                <td><?= $datos->descripcion ?></td>
+                                <td><?= $datos->año ?></td>
+                                <td><?= $datos->duracion ?></td>
+                                <td><?= $datos->url ?></td>
+                                <td><?= $datos->director ?></td>
+                                <td>
+                                    <a href="" class="btn btn-small btn-danger"><i class="bi bi-pencil-square"></i></a>
+                                </td>
+                                <td>
+                                    <a href="" class="btn btn-small btn-success"><i class="bi bi-file-earmark-x"></i></a>
+                                </td>
+                            </tr>
+                        <?php
+                        }
+                        ?>
                     </tbody>
                     <tfoot>
                         <tr>
