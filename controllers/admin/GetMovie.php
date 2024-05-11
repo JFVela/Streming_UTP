@@ -12,17 +12,13 @@ if (isset($_POST['id'])) {
     $stmt->execute();
     $resultado = $stmt->get_result();
 
-    if ($resultado->num_rows > 0) {
-        // Obtener los datos como un array asociativo
-        $datos = $resultado->fetch_assoc();
-        // Devolver los datos como JSON
+    if ($resultado) {
+        $datos = $resultado->fetch_all(MYSQLI_ASSOC);
         echo json_encode($datos);
     } else {
-        // Si no se encuentra ninguna película con el ID proporcionado, devolver un array vacío
         echo json_encode([]);
     }
 } else {
-    // Si no se proporcionó ningún ID, devolver un array vacío
     echo json_encode([]);
 }
 ?>

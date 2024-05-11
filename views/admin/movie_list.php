@@ -134,34 +134,26 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form id="editForm">
-                        <div class="form-group">
-                            <label for="editIdMovie">ID:</label>
-                            <input type="text" class="form-control" id="editIdMovie">
-                        </div>
-                        <div class="form-group">
-                            <label for="editTitulo">Title:</label>
-                            <input type="text" class="form-control" id="editTitulo">
-                        </div>
-                        <div class="form-group">
-                            <label for="editAño">Year:</label>
-                            <input type="text" class="form-control" id="editAño">
-                        </div>
-                        <div class="form-group">
-                            <label for="editDuracion">Duration:</label>
-                            <input type="text" class="form-control" id="editDuracion">
-                        </div>
-                        <div class="form-group">
-                            <label for="editDirector">Director:</label>
-                            <input type="text" class="form-control" id="editDirector">
-                        </div>
-                    </form>
+                    <table id="tableModal" class="table table-striped" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Title</th>
+                                <th>Description</th>
+                                <th>Year</th>
+                                <th>Duration</th>
+                                <th>URL</th>
+                                <th>Director</th>
+                            </tr>
+                        </thead>
+                        <tbody id='cuerpo'>
+                            <!-- Contenido de la tabla -->
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
     </div>
-
-
 
     <!-- jQuery -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -171,7 +163,7 @@
     <!-- Bootstrap Bundle -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 
-    <script src="../../assents/script/devolver.js"></script>
+    <script src="../../assents/script/getMovieTable.js"></script>
     <script>
         $(document).ready(function() {
             $('#example').DataTable();
