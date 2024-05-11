@@ -150,6 +150,45 @@
                             <!-- Contenido de la tabla -->
                         </tbody>
                     </table>
+
+                    <!-- Formulario para mostrar los detalles de la película -->
+                    <form id="editForm">
+                        <!-- Campo oculto para el ID de la película -->
+                        <input type="hidden" id="idPelicula" name="idPelicula">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="titulo" class="form-label">Título de la película</label>
+                                <input type="text" id="titulo" name="titulo" class="form-control">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="descripcion" class="form-label">Descripción</label>
+                                <textarea id="descripcion" name="descripcion" class="form-control"></textarea>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="anio" class="form-label">Año</label>
+                                <input type="number" id="anio" name="anio" class="form-control">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="duracion" class="form-label">Duración (HH:MM:SS)</label>
+                                <input type="text" id="duracion" name="duracion" class="form-control">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="url" class="form-label">URL de la película</label>
+                                <input type="url" id="url" name="url" class="form-control">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="director" class="form-label">Director</label>
+                                <input type="text" id="director" name="director" class="form-control">
+                            </div>
+                        </div>
+                        
+                    </form>
+
+
                 </div>
             </div>
         </div>
@@ -164,6 +203,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 
     <script src="../../assents/script/getMovieTable.js"></script>
+
     <script>
         $(document).ready(function() {
             $('#example').DataTable();

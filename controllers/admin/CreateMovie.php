@@ -18,20 +18,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['btnRegistrar']) && $_P
 
     // Ejecutar la consulta
     if ($statement->execute()) {
-        // Mostrar Sweet Alert 2
-        echo "<script>
-                Swal.fire({
-                  position: 'top-end',
-                  icon: 'success',
-                  title: 'Registro Exitoso',
-                  showConfirmButton: false,
-                  timer: 3000
-                });
-              </script>";
-    } else {
-        echo "Error al insertar los datos:" . $conexion->error;
-    }
-
+      // Mostrar Sweet Alert 2
+      echo "<script>
+              Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'Registro Exitoso',
+                showConfirmButton: false,
+                timer: 3000
+              });
+            </script>";
+  } else {
+    echo "<script>
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Ya existe ese título de Película!',
+                imageUrl: '../../assents/imag/error.gif',
+                imageWidth: 400,
+                imageHeight: 200
+            });
+          </script>";
+}
     // Cerrar la conexión a la base de datos
     $conexion->close();
 }
