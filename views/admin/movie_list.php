@@ -20,7 +20,6 @@
                 <fieldset>
                     <legend class="text-center text-secondary">Registrar peliculas</legend>
                     <?php
-                    include "../../config/conexion.php";
                     include "../../controllers/admin/CreateMovie.php";
                     ?>
                     <div class="mb-3">
@@ -47,7 +46,7 @@
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="duracion" class="form-label">Duración (HH:MM:SS)</label>
-                            <input type="text" id="duracion" name="duracion" class="form-control" placeholder="HH:MM:SS" pattern="[0-9]{2}:[0-5][0-9]:[0-5][0-9]" required>
+                            <input type="time" step="2" id="duracion" name="duracion" class="form-control" required>
                             <div class="invalid-feedback">
                                 Por favor, ingrese una duración válida en formato HH:MM:SS.
                             </div>
@@ -67,7 +66,7 @@
                             Por favor, ingrese el nombre del director de la película.
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-success" name="btnRegistrar" value="ok">Submit</button>
+                    <button type="submit" class="btn btn-success" name="btnRegistrar" value="ok">Agregar</button>
                 </fieldset>
             </form>
             <div class="col-md-6 p-3 table-container mx-auto">
@@ -151,44 +150,45 @@
                         </tbody>
                     </table>
 
-                    <!-- Formulario para mostrar los detalles de la película -->
-                    <form id="editForm">
+                    <!-- Formulario para modificar los detalles de la película -->
+                    <form id="editForm" method="post">
+                        <?php
+                        include "../../controllers/admin/UpdateMovie.php";
+                        ?>
                         <!-- Campo oculto para el ID de la película -->
-                        <input type="hidden" id="idPelicula" name="idPelicula">
+                        <input type="" id="idPelicula" name="idPelicula">
                         <div class="row">
                             <div class="col-md-6 mb-3">
-                                <label for="titulo" class="form-label">Título de la película</label>
-                                <input type="text" id="titulo" name="titulo" class="form-control">
+                                <label for="titulo1" class="form-label">Título de la película</label>
+                                <input type="text" id="titulo1" name="titulo1" class="form-control">
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label for="descripcion" class="form-label">Descripción</label>
-                                <textarea id="descripcion" name="descripcion" class="form-control"></textarea>
+                                <label for="descripcion1" class="form-label">Descripción</label>
+                                <textarea id="descripcion1" name="descripcion1" class="form-control"></textarea>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6 mb-3">
-                                <label for="anio" class="form-label">Año</label>
-                                <input type="number" id="anio" name="anio" class="form-control">
+                                <label for="anio1" class="form-label">Año</label>
+                                <input type="number" id="anio1" name="anio1" class="form-control">
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label for="duracion" class="form-label">Duración (HH:MM:SS)</label>
-                                <input type="text" id="duracion" name="duracion" class="form-control">
+                                <label for="duracion1" class="form-label">Duración (HH:MM:SS)</label>
+                                <input type="text" id="duracion1" name="duracion1" class="form-control">
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6 mb-3">
-                                <label for="url" class="form-label">URL de la película</label>
-                                <input type="url" id="url" name="url" class="form-control">
+                                <label for="url1" class="form-label">URL de la película</label>
+                                <input type="url" id="url1" name="url1" class="form-control">
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label for="director" class="form-label">Director</label>
-                                <input type="text" id="director" name="director" class="form-control">
+                                <label for="director1" class="form-label">Director</label>
+                                <input type="text" id="director1" name="director1" class="form-control">
                             </div>
                         </div>
-                        
+                        <button type="submit" class="btn btn-warning" name="btnActualizar1" value="actualizar">Actualizar</button>
                     </form>
-
-
                 </div>
             </div>
         </div>
@@ -209,16 +209,6 @@
             $('#example').DataTable();
         });
     </script>
-    <script>
-        // Script para separar los números con dos puntos en el campo de duración
-        document.getElementById('duracion').addEventListener('input', function(e) {
-            var input = e.target;
-            if (input.value.length === 2 || input.value.length === 5) {
-                input.value += ':';
-            }
-        });
-    </script>
-
 </body>
 
 </html>

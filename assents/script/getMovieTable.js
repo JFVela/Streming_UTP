@@ -30,12 +30,13 @@ $(document).on("click", ".editBtn", function() {
                 `);
 
                 // Agregar los detalles de la película al formulario
-                $('#editForm #titulo').val(pelicula.titulo);
-                $('#editForm #descripcion').val(pelicula.descripcion);
-                $('#editForm #anio').val(pelicula.año);
-                $('#editForm #duracion').val(pelicula.duracion);
-                $('#editForm #url').val(pelicula.url);
-                $('#editForm #director').val(pelicula.director);
+                $('#editForm #idPelicula').val(pelicula.idMovie);
+                $('#editForm #titulo1').val(pelicula.titulo);
+                $('#editForm #descripcion1').val(pelicula.descripcion);
+                $('#editForm #anio1').val(pelicula.año);
+                $('#editForm #duracion1').val(pelicula.duracion);
+                $('#editForm #url1').val(pelicula.url);
+                $('#editForm #director1').val(pelicula.director);
             });
             // Mostrar el modal después de cargar los detalles de la película
             $('#editModal').modal('show');
