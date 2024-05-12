@@ -13,8 +13,10 @@
 </head>
 
 <body>
+    <?php
+    include "../../controllers/admin/deleteMovie.php";
+    ?>
     <h1 class="text-center">Peliculas</h1>
-
     <!-- Modal -->
     <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -47,7 +49,7 @@
                         include "../../controllers/admin/UpdateMovie.php";
                         ?>
                         <!-- Campo oculto para el ID de la película -->
-                        <input type="" id="idPelicula" name="idPelicula">
+                        <input type="hidden" id="idPelicula" name="idPelicula">
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label for="titulo1" class="form-label">Título de la película</label>
@@ -170,9 +172,10 @@
                                         <i class="bi bi-pencil-square"></i>
                                     </button>
                                 </td>
-
                                 <td>
-                                    <a href="" class="btn btn-small btn-danger"><i class="bi bi-file-earmark-x"></i></a>
+                                    <button type="button" class="btn btn-small btn-danger deleteBtn" data-id="<?= $datos->idMovie ?>">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
                                 </td>
                             </tr>
                         <?php
@@ -204,12 +207,14 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 
     <script src="../../assents/script/getMovieTable.js"></script>
-
+    <script src="../../assents/script/deleteMovieTable.js"></script>
     <script>
         $(document).ready(function() {
             $('#example').DataTable();
         });
     </script>
+
+
 </body>
 
 </html>

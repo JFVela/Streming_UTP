@@ -1,9 +1,7 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['btnRegistrar']) && $_POST['btnRegistrar'] == 'ok') {
-    // Incluir el archivo de conexión a la base de datos
     include "../../config/conexion.php";
 
-    // Obtener los datos del formulario
     $titulo = $_POST['titulo'];
     $descripcion = $_POST['descripcion'];
     $anio = $_POST['anio'];
@@ -11,7 +9,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['btnRegistrar']) && $_P
     $url = $_POST['url'];
     $director = $_POST['director'];
 
-    // Preparar la consulta SQL para insertar los datos
     $sql=$conexion->query("INSERT INTO cineandes.movie (titulo, descripcion, año, duracion, url, director) VALUES ('$titulo', '$descripcion','$anio' ,'$duracion' ,'$url' ,'$director' )");
     if ($sql==1) {
       echo "<script>
