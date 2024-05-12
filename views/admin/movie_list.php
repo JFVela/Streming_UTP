@@ -14,6 +14,77 @@
 
 <body>
     <h1 class="text-center">Peliculas</h1>
+
+    <!-- Modal -->
+    <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editModalLabel">Editar Película</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <table id="tableModal" class="table table-striped" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Title</th>
+                                <th>Description</th>
+                                <th>Year</th>
+                                <th>Duration</th>
+                                <th>URL</th>
+                                <th>Director</th>
+                            </tr>
+                        </thead>
+                        <tbody id='cuerpo'>
+                            <!-- Contenido de la tabla -->
+                        </tbody>
+                    </table>
+
+                    <!-- Formulario para modificar los detalles de la película -->
+                    <form id="editForm" method="post">
+                        <?php
+                        include "../../controllers/admin/UpdateMovie.php";
+                        ?>
+                        <!-- Campo oculto para el ID de la película -->
+                        <input type="" id="idPelicula" name="idPelicula">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="titulo1" class="form-label">Título de la película</label>
+                                <input type="text" id="titulo1" name="titulo1" class="form-control">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="descripcion1" class="form-label">Descripción</label>
+                                <textarea id="descripcion1" name="descripcion1" class="form-control"></textarea>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="anio1" class="form-label">Año</label>
+                                <input type="number" id="anio1" name="anio1" class="form-control">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="duracion1" class="form-label">Duración (HH:MM:SS)</label>
+                                <input type="text" id="duracion1" name="duracion1" class="form-control">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="url1" class="form-label">URL de la película</label>
+                                <input type="url" id="url1" name="url1" class="form-control">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="director1" class="form-label">Director</label>
+                                <input type="text" id="director1" name="director1" class="form-control">
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-warning" name="btnActualizar" value="actualizar">Actualizar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="container-fluid">
         <div class="row justify-content-between">
             <form class="col-md-5 p-3 mx-auto" method="post">
@@ -120,76 +191,6 @@
                         </tr>
                     </tfoot>
                 </table>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal -->
-    <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="editModalLabel">Editar Película</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <table id="tableModal" class="table table-striped" style="width:100%">
-                        <thead>
-                            <tr>
-                                <th>Id</th>
-                                <th>Title</th>
-                                <th>Description</th>
-                                <th>Year</th>
-                                <th>Duration</th>
-                                <th>URL</th>
-                                <th>Director</th>
-                            </tr>
-                        </thead>
-                        <tbody id='cuerpo'>
-                            <!-- Contenido de la tabla -->
-                        </tbody>
-                    </table>
-
-                    <!-- Formulario para modificar los detalles de la película -->
-                    <form id="editForm" method="post">
-                        <?php
-                        include "../../controllers/admin/UpdateMovie.php";
-                        ?>
-                        <!-- Campo oculto para el ID de la película -->
-                        <input type="" id="idPelicula" name="idPelicula">
-                        <div class="row">
-                            <div class="col-md-6 mb-3">
-                                <label for="titulo1" class="form-label">Título de la película</label>
-                                <input type="text" id="titulo1" name="titulo1" class="form-control">
-                            </div>
-                            <div class="col-md-6 mb-3">
-                                <label for="descripcion1" class="form-label">Descripción</label>
-                                <textarea id="descripcion1" name="descripcion1" class="form-control"></textarea>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6 mb-3">
-                                <label for="anio1" class="form-label">Año</label>
-                                <input type="number" id="anio1" name="anio1" class="form-control">
-                            </div>
-                            <div class="col-md-6 mb-3">
-                                <label for="duracion1" class="form-label">Duración (HH:MM:SS)</label>
-                                <input type="text" id="duracion1" name="duracion1" class="form-control">
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6 mb-3">
-                                <label for="url1" class="form-label">URL de la película</label>
-                                <input type="url" id="url1" name="url1" class="form-control">
-                            </div>
-                            <div class="col-md-6 mb-3">
-                                <label for="director1" class="form-label">Director</label>
-                                <input type="text" id="director1" name="director1" class="form-control">
-                            </div>
-                        </div>
-                        <button type="submit" class="btn btn-warning" name="btnActualizar1" value="actualizar">Actualizar</button>
-                    </form>
-                </div>
             </div>
         </div>
     </div>

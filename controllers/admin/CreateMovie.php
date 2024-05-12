@@ -13,9 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['btnRegistrar']) && $_P
 
     // Preparar la consulta SQL para insertar los datos
     $sql=$conexion->query("INSERT INTO cineandes.movie (titulo, descripcion, año, duracion, url, director) VALUES ('$titulo', '$descripcion','$anio' ,'$duracion' ,'$url' ,'$director' )");
-    // Ejecutar la consulta
     if ($sql==1) {
-      // Mostrar Sweet Alert 2
       echo "<script>
               Swal.fire({
                 position: 'top-end',
@@ -25,10 +23,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['btnRegistrar']) && $_P
                 timer: 3000
               });
             </script>";
-
-            echo "<script>
-            console.log('La película tiene una duración de $duracion minutos.');
-          </script>";
   } else {
     echo "<script>
             Swal.fire({
@@ -41,7 +35,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['btnRegistrar']) && $_P
             });
           </script>";
 }
-    // Cerrar la conexión a la base de datos
     $conexion->close();
 }
 ?>
