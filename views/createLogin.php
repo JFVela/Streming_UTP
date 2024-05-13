@@ -1,5 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php
+include '../controllers/controlador_registrar_usuario.php';
+?>
+
 
 <head>
     <meta charset="utf-8">
@@ -31,45 +35,48 @@
                                         <img src="../assents/imag/logoAndes.png" style="width: 185px;" alt="logo">
                                         <h4 class="mt-1 mb-5 pb-1">Porfavor complete el formulario</h4>
                                     </div>
-                                    <form>
+
+                                    <!-- Formulario para regsitrar -->
+                                    <form action="" method="post" class="registrarUsuario" onsubmit="return validarContraseña();">
                                         <div class="row">
                                             <div class="col">
                                                 <label for="firstName" class="form-label">Primer Nombre</label>
-                                                <input type="text" class="form-control" id="firstName" required>
+                                                <input type="text" class="form-control" id="firstName" name="firstName" required>
                                             </div>
                                             <div class="col">
                                                 <label for="secondName" class="form-label">Segundo Nombre</label>
-                                                <input type="text" class="form-control" id="secondName" required>
+                                                <input type="text" class="form-control" id="secondName" name="secondName" required>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col">
                                                 <label for="lastName1" class="form-label">Apellido Paterno</label>
-                                                <input type="text" class="form-control" id="lastName1" required>
+                                                <input type="text" class="form-control" id="lastName1" name="lastName1" required>
                                             </div>
                                             <div class="col">
                                                 <label for="lastName2" class="form-label">Apellido Materno</label>
-                                                <input type="text" class="form-control" id="lastName2" required>
+                                                <input type="text" class="form-control" id="lastName2" name="lastName2" required>
                                             </div>
                                         </div>
                                         <div class="mb-3">
                                             <label for="email" class="form-label">Correo Electrónico</label>
-                                            <input type="email" class="form-control" id="email" required>
+                                            <input type="email" class="form-control" id="email" name="email" required>
                                         </div>
                                         <div class="mb-3">
                                             <label for="phone" class="form-label">Número de Teléfono (Opcional)</label>
-                                            <input type="tel" class="form-control" id="phone">
+                                            <input type="tel" class="form-control" id="phone" name="phone" required>
                                         </div>
                                         <div class="mb-3">
                                             <label for="password" class="form-label">Contraseña</label>
-                                            <input type="password" class="form-control" id="password" required>
+                                            <input type="password" class="form-control" id="password" name="password" required>
                                         </div>
                                         <div class="mb-3">
                                             <label for="confirmPassword" class="form-label">Confirmar Contraseña</label>
-                                            <input type="password" class="form-control" id="confirmPassword" required>
+                                            <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" required>
                                         </div>
-                                        <div class="text-center pt-1 mb-5 pb-1">
-                                            <button type="submit" class="btn btn-primary">Registrarse</button>
+                                        <div class="text-center pt-1 mb-5 pb-1 cuenta">
+                                            <input type="submit" class="btn btn-primary" value="Registrar" name="registro"></input>
+                                            <a href="login.php">Iniciar sección</a>
                                         </div>
                                     </form>
                                 </div>
@@ -81,6 +88,7 @@
         </div>
     </section>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+    <script src="../assents/script/validarContraseña.js"></script>
 </body>
 
 </html>

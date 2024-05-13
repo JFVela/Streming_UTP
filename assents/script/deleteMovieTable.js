@@ -26,10 +26,10 @@ $(document).ready(function() {
                                 title: 'Registro Eliminado Exitosamente',
                                 showConfirmButton: false,
                                 timer: 2000,
-                                didClose: () => {
-                                    location.reload();
-                                }
                             });
+                            setTimeout(() => {
+                                window.history.replaceState(null, null, window.location.pathname);
+                            }, 0);
                         } else {
                             Swal.fire({
                                 icon: 'error',
