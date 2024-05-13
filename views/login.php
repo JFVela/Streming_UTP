@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<?php
+include "../controllers/controlador_validar_login.php";
+?>
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -24,20 +28,20 @@
                                         <h4 class="mt-1 mb-5 pb-1">Donde el entretenimiento encuentra su hogar en las alturas de los Andes</h4>
                                     </div>
 
-                                    <form>
+                                    <form method="post">
                                         <p>Por favor, ingrese su usuario</p>
                                         <div data-mdb-input-init class="form-outline mb-4">
-                                            <input type="email" id="form2Example11" class="form-control" placeholder="Número telefonico o correo electonico" />
+                                            <input name="user" type="email" id="form2Example11" class="form-control" placeholder="Número telefonico o correo electonico" />
                                             <label class="form-label" for="form2Example11">Username</label>
                                         </div>
 
                                         <div data-mdb-input-init class="form-outline mb-4">
-                                            <input type="password" id="form2Example22" class="form-control" />
+                                            <input name="contra" type="password" id="form2Example22" class="form-control" />
                                             <label class="form-label" for="form2Example22">Password</label>
                                         </div>
 
                                         <div class="text-center pt-1 mb-5 pb-1">
-                                            <button data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="button">Ingresar</button>
+                                            <input data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="submit" name="btnLogear" value="Ingresar">
                                             <br>
                                             <a class="text-muted" href="#!">Has olvidado tu contraseña?</a>
                                         </div>

@@ -1,3 +1,8 @@
+<?php
+session_start();
+//puedo agregar logica que necesita de login jeje
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -26,7 +31,17 @@
                     <li><a href="preguntas.php">Preguntas</a></1i>
                 </ul>
             </nav>
-            <a href="login.php" class="btn-l">Login</a>
+            <?php
+            // Verificar si el usuario ha iniciado sesión
+            if (isset($_SESSION["idUsuario"])) {
+                // Si ha iniciado sesión, mostrar su nombre y un botón para cerrar sesión
+                echo '<div class="usuario-info">BIENVENIDO! ' . $_SESSION["nombreUsuario"] . ', ' . $_SESSION["apellidoUsuario"] . '</div>';
+                echo '<a href="../controllers/controlador_cerrar_seccion.php" class="btn-l">Cerrar Sesión</a>';
+            } else {
+                // Si no ha iniciado sesión, mostrar el botón de inicio de sesión
+                echo '<a href="login.php" class="btn-l">Login</a>';
+            }
+            ?>
         </div>
 
         <!-- CONTENIDO -->
