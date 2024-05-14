@@ -40,7 +40,7 @@
             // Desplazar al fondo del chatbox
             chatbox.scrollTop = chatbox.scrollHeight;
         }
-
+jjjjjj
         function getResponse(input) {
             // Aquí puedes definir tus preguntas y respuestas
             // Por ejemplo:
