@@ -1,6 +1,5 @@
 <?php
 session_start();
-//puedo agregar logica que necesita de login jeje
 ?>
 
 <!doctype html>
