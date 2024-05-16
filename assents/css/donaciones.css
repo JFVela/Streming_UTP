@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Jersey+15&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+}
+
+body {
+    background-color: navy;
+    font-family: 'Bebas Neue', cursive;
+    color: beige;
+}
+
+body, html {
+    height: 100%;
+    margin: 0;
+  }
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Centra en la parte superior */
+    height: 100%;
+  }
+  .donation-gallery {
+    width: 50%;
+    position: relative;
+  }
+  .gallery {
+    overflow: hidden;
+    position: relative;
+  }
+  .gallery img {
+    width: 300px; /* Tamaño fijo para todas las imágenes */
+    display: block;
+  }
+  .prev,
+  .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.5);
+    border: none;
+    color: #333;
+    cursor: pointer;
+    padding: 10px;
+    font-size: 18px;
+    z-index: 1;
+  }
+  .prev {
+    left: 0;
+  }
+  .next {
+    right: 0;
+  }
