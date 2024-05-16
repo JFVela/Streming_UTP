@@ -1,7 +1,3 @@
-<?php
-session_start();
-?>
-
 <!doctype html>
 <html lang="en">
 
@@ -9,53 +5,27 @@ session_start();
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Inicio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="../assents/css/inicio.css">
 </head>
 
 <body>
-    <header class="header">
-        <!-- EL MENU PRINCIPAL-->
-        <div class="menu container">
-            <a href="#" class="logo">CineAndes</a>
-            <input type="checkbox" id="menu" />
-            <label for="menu">
-                <img src="../assents/imag/Icono.png" class="menu-icono" alt="menu">
-            </label>
-
-            <nav class="navbar">
-                <ul>
-                    <li><a href="nosotros.php">Nosotros</a></1i>
-                    <li><a href="#">Pe1icu1as</a></1i>
-                    <li><a href="#">Contacto</a></1i>
-                    <li><a href="preguntas.php">Preguntas</a></1i>
-                </ul>
-            </nav>
-            <?php
-            // Verificar si el usuario ha iniciado sesión
-            if (isset($_SESSION["idUsuario"])) {
-                // Si ha iniciado sesión, mostrar su nombre y un botón para cerrar sesión
-                echo '<div class="usuario-info">BIENVENIDO! ' . $_SESSION["nombreUsuario"] . ', ' . $_SESSION["apellidoUsuario"] . '</div>';
-                echo '<a href="../controllers/controlador_cerrar_seccion.php" class="btn-l">Cerrar Sesión</a>';
-            } else {
-                // Si no ha iniciado sesión, mostrar el botón de inicio de sesión
-                echo '<a href="login.php" class="btn-l">Login</a>';
-            }
-            ?>
+    <?php
+    include "../includes/header.php";
+    ?>
+    <!-- CONTENIDO -->
+    <div class="header-content container">
+        <div class="header-1">
+            <img src="../assents/imag/PROTOTIPO.jpeg" alt="">
+            <a href="#" class="btn-2">Ver ahora</a>
         </div>
-
-        <!-- CONTENIDO -->
-        <div class="header-content container">
-            <div class="header-1">
-                <img src="../assents/imag/PROTOTIPO.jpeg" alt="">
-                <a href="#" class="btn-2">Ver ahora</a>
-            </div>
-            <div class="header-2">
-                <h1>Las mejores <br> Peliculas </h1>
-                <img src="../assents/imag/Play.png" alt="">
-            </div>
+        <div class="header-2">
+            <h1>Las mejores <br> Peliculas </h1>
+            <img src="../assents/imag/Play.png" alt="">
         </div>
+    </div>
 
-    </header>
+
 
     <!-- SECCION DE PELICULAS -->
     <section class="movies container">
@@ -147,17 +117,12 @@ session_start();
         <div class="load-more" id="load-more-2"> Cargar mas</div>
     </section>
 
-    <footer class="footer container">
-        <h3>CineAndes</h3>
-        <ul>
-            <li><a href="#">Inicio</a></li>
-            <li><a href="#">Nosotros</a></li>
-            <li><a href="#">Peliculas</a></li>
-            <li><a href="#">Contactos</a></li>
-        </ul>
-    </footer>
+    <!--FOOTER-->
+    <?php
+    include "../includes/footer.php";
+    ?>
 
-    <script src=""></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 
 </html>
