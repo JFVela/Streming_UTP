@@ -22,3 +22,27 @@ let currentIndex = 0;
     }
 
     showImage(currentIndex); // Muestra la primera imagen al cargar la página
+
+    let carouselIndex = 0;
+    const carouselItems = document.querySelectorAll('.carousel-item');
+
+    function showCarouselItem(index) {
+        carouselItems.forEach((item, i) => {
+            item.classList.remove('active');
+            item.style.transform = `scale(${i === index ? 1 : 0.8})`;
+            item.style.opacity = i === index ? 1 : 0.5;
+        });
+        carouselItems[index].classList.add('active');
+    }
+
+    function prevCarousel() {
+        carouselIndex = (carouselIndex === 0) ? carouselItems.length - 1 : carouselIndex - 1;
+        showCarouselItem(carouselIndex);
+    }
+
+    function nextCarousel() {
+        carouselIndex = (carouselIndex === carouselItems.length - 1) ? 0 : carouselIndex + 1;
+        showCarouselItem(carouselIndex);
+    }
+
+    showCarouselItem(carouselIndex);

@@ -37,7 +37,7 @@ session_start();
       <h2>Niveles de Donación</h2>
       <div class="level">
         <h3>Nivel Básico</h3>
-        <p>Acceso a contenido exclusivo y eventos especiales.</p>
+        <p>Acceso anticipado a contenido y eventos especiales.</p>
         <button onclick="window.location.href='donar.html'">Donar</button>
       </div>
       <div class="level">
@@ -73,6 +73,34 @@ session_start();
       <div class="benefit">
         <p>Descuentos en merchandising.</p>
       </div>
+    </div>
+    <div class="donation-stats">
+      <img src="../assents/imag/fondos.jpg" alt="Fondo">
+      <h2>Cifras de Donaciones</h2>
+      <h3>49 Proyectos financiados</h3>
+      <h3>127 Mil familias beneficiadas</h3>
+      <h3>50 Nuevas series producidas</h3>
+      <h3>18 Millones de dólares recaudados</h3>
+    </div>
+
+    <div class="carousel">
+      <h2>Proyectos Destacados</h2>
+      <button class="carousel-button prev" onclick="prevCarousel()">&#10094;</button>
+      <div class="carousel-container">
+        <div class="carousel-item active">
+          <h3>Proyecto A</h3>
+          <p>Descripción del proyecto A.</p>
+        </div>
+        <div class="carousel-item">
+          <h3>Proyecto B</h3>
+          <p>Descripción del proyecto B.</p>
+        </div>
+        <div class="carousel-item">
+          <h3>Proyecto C</h3>
+          <p>Descripción del proyecto C.</p>
+        </div>
+      </div>
+      <button class="carousel-button next" onclick="nextCarousel()">&#10095;</button>
     </div>
 </div>
 <script src="../assents/script/script.js"></script>
