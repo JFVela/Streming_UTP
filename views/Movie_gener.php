@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <style>
+        .seccion-peliculas {
+            padding: 25px;
+            background: linear-gradient(to bottom, rgba(204, 158, 9, 0.3), rgba(236, 220, 138, 0.1));
+        }
+
+        .img-responsiva {
+            width: 100%;
+            height: auto;
+            max-height: 250px;
+            min-height: 150px;
+            object-fit: cover;
+        }
+
+        .contenido-Card {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .btn-group {
+            flex-wrap: wrap;
+        }
+
+        .btn-group .btn {
+            margin: 2px;
+        }
+
+        .cartaPelicula:hover {
+            transform: scale(1.05);
+            transition: transform 0.3s ease;
+            background-color: rgba(79, 221, 226, 0.416);
+        }
+
+        @media (min-width: 768px) and (max-width: 1024px) {
+            .row-cols-md-5>* {
+                flex: 0 0 auto;
+                width: 33.333333%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <section class="seccion-peliculas">
+        <div class="row row-cols-2 row-cols-md-5 g-4">
+            <div class="col">
+                <a href="#" class="cartaPelicula btn card h-100">
+                    <img src="/assents/imag/portada de pelicula/ToyStory2.jpg" class="card-img-top img-responsiva" alt="...">
+                    <div class="contenido-Card card-body d-flex flex-column">
+                        <h5 class="card-title">Toy Story 2</h5>
+                        <div class="btn-group mt-auto">
+                            <button type="button" class="btn btn-outline-danger">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-suit-heart-fill" viewBox="0 0 16 16">
+                                    <path d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1">
+                                    </path>
+                                </svg>
+                                Likes: 100
+                            </button>
+                            <button type="button" class="btn btn-outline-warning">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
+                                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293z">
+                                    </path>
+                                </svg>
+                                Dislike: 0
+                            </button>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col">
+                <a href="#" class="cartaPelicula btn card h-100">
+                    <img src="/assents/imag/portada de pelicula/ToyStory4.jpg" class="card-img-top img-responsiva" alt="...">
+                    <div class="contenido-Card card-body d-flex flex-column">
+                        <h5 class="card-title">Toy Story 4</h5>
+                        <div class="btn-group mt-auto">
+                            <button type="button" class="btn btn-outline-danger">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-suit-heart-fill" viewBox="0 0 16 16">
+                                    <path d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1">
+                                    </path>
+                                </svg>
+                                Likes: 100
+                            </button>
+                            <button type="button" class="btn btn-outline-warning">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
+                                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293z">
+                                    </path>
+                                </svg>
+                                Dislike: 0
+                            </button>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col">
+                <a href="#" class="cartaPelicula btn card h-100">
+                    <img src="/assents/imag/portada de pelicula/bellayBestia.jpg" class="card-img-top img-responsiva" alt="...">
+                    <div class="contenido-Card card-body d-flex flex-column">
+                        <h5 class="card-title">Bella y la bestia</h5>
+                        <div class="btn-group mt-auto">
+                            <button type="button" class="btn btn-outline-danger">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-suit-heart-fill" viewBox="0 0 16 16">
+                                    <path d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1">
+                                    </path>
+                                </svg>
+                                Likes: 100
+                            </button>
+                            <button type="button" class="btn btn-outline-warning">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
+                                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293z">
+                                    </path>
+                                </svg>
+                                Dislike: 0
+                            </button>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col">
+                <a href="#" class="cartaPelicula btn card h-100">
+                    <img src="/assents/imag/portada de pelicula/jojos.jpg" class="card-img-top img-responsiva" alt="...">
+                    <div class="contenido-Card card-body d-flex flex-column">
+                        <h5 class="card-title">Jojos Bizarre Adventure</h5>
+                        <div class="btn-group mt-auto">
+                            <button type="button" class="btn btn-outline-danger">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-suit-heart-fill" viewBox="0 0 16 16">
+                                    <path d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1">
+                                    </path>
+                                </svg>
+                                Likes: 100
+                            </button>
+                            <button type="button" class="btn btn-outline-warning">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
+                                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293z">
+                                    </path>
+                                </svg>
+                                Dislike: 0
+                            </button>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col">
+                <a href="#" class="cartaPelicula btn card h-100">
+                    <img src="/assents/imag/portada de pelicula/lilo.jpg" class="card-img-top img-responsiva" alt="...">
+                    <div class="contenido-Card card-body d-flex flex-column">
+                        <h5 class="card-title">Lilo y Stich</h5>
+                        <div class="btn-group mt-auto">
+                            <button type="button" class="btn btn-outline-danger">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-suit-heart-fill" viewBox="0 0 16 16">
+                                    <path d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1">
+                                    </path>
+                                </svg>
+                                Likes: 100
+                            </button>
+                            <button type="button" class="btn btn-outline-warning">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
+                                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293z">
+                                    </path>
+                                </svg>
+                                Dislike: 0
+                            </button>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col">
+                <a href="#" class="cartaPelicula btn card h-100">
+                    <img src="/assents/imag/portada de pelicula/spiderman.jpg" class="card-img-top img-responsiva" alt="...">
+                    <div class="contenido-Card card-body d-flex flex-column">
+                        <h5 class="card-title">Spiderman negro</h5>
+                        <div class="btn-group mt-auto">
+                            <button type="button" class="btn btn-outline-danger">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-suit-heart-fill" viewBox="0 0 16 16">
+                                    <path d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1">
+                                    </path>
+                                </svg>
+                                Likes: 100
+                            </button>
+                            <button type="button" class="btn btn-outline-warning">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
+                                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293z">
+                                    </path>
+                                </svg>
+                                Dislike: 0
+                            </button>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+
+</html>
