@@ -4,58 +4,23 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-    <style>
-        body {
-            background-image: url('../assents/imag/fondo_Generos.png');
-            background-size: cover;
-            background-repeat: no-repeat;
-        }
-
-        .custom-button {
-            display: block;
-            border: none;
-            padding: 0;
-            text-align: center;
-            overflow: hidden;
-            position: relative;
-            transition: transform 0.3s;
-            background-color: transparent;
-            color: inherit;
-            text-decoration: none;
-        }
-
-        .custom-button:hover {
-            transform: scale(1.05);
-        }
-
-        .custom-button .card-body {
-            padding: 1rem;
-            background: rgba(255, 255, 255, 0.9);
-            transition: background 0.3s;
-        }
-
-        .custom-button:hover .card-body {
-            background: rgba(255, 255, 255, 1);
-        }
-
-        .custom-button img {
-            transition: transform 0.3s, filter 0.3s;
-        }
-
-        .custom-button:hover img {
-            transform: scale(1.1);
-            filter: brightness(0.8);
-        }
-    </style>
+    <!--Boostrap-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!--Iconos Boostrap-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!--INCLUDES-->
+    <link rel="stylesheet" href="/assents/css/includes.css">
+    <!--ESTILOS-->
+    <link rel="stylesheet" href="/assents/css/generos.css">
 </head>
 
-<!--HEADER-->
-<?php
-include "../includes/header.php";
-?>
-
 <body>
+    <!--HEADER-->
+    <?php
+    include "../includes/header.php";
+    ?>
+    <!--FIN HEADER-->
+
     <div class="row row-cols-2 row-cols-md-4 g-3 m-4 ">
         <?php
         include '../config/conexion.php';
@@ -88,6 +53,9 @@ include "../includes/header.php";
     <?php
     include "../includes/footer.php";
     ?>
+    <!--FIN FOOTER-->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 
 </html>

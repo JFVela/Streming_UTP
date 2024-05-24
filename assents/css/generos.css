@@ -1,0 +1,41 @@
+body {
+    background-image: url('/assents/imag/fondo_Generos.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.custom-button {
+    display: block;
+    border: none;
+    padding: 0;
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+    transition: transform 0.3s;
+    background-color: transparent;
+    color: inherit;
+    text-decoration: none;
+}
+
+.custom-button:hover {
+    transform: scale(1.05);
+}
+
+.custom-button .card-body {
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.9);
+    transition: background 0.3s;
+}
+
+.custom-button:hover .card-body {
+    background: rgba(255, 255, 255, 1);
+}
+
+.custom-button img {
+    transition: transform 0.3s, filter 0.3s;
+}
+
+.custom-button:hover img {
+    transform: scale(1.1);
+    filter: brightness(0.8);
+}

@@ -1,0 +1,34 @@
+
+.logo_Imagen {
+    max-width: 100px;
+    height: auto;
+    border: 2px solid black;
+    border-radius: 480%;
+    display: block;
+}
+
+/* Estilo para los enlaces */
+.navbar-nav .nav-link {
+    font-size: 18px;
+    transition: all 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+    font-size: 20px;
+    color: red;
+}
+
+.navbar-nav .nav-link:active {
+    color: blue;
+}
+
+.social-icons .bi {
+    vertical-align: middle;
+    margin-right: 10px;
+    /* Aumenté el margen para separar un poco más los iconos */
+    font-size: 24px;
+    /* Cambié el tamaño de los iconos a 24px */
+}
+footer{
+    background-color: white;
+}
