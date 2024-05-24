@@ -6,200 +6,83 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Bootstrap demo</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-
-    <style>
-        .seccion-peliculas {
-            padding: 25px;
-            background: linear-gradient(to bottom, rgba(204, 158, 9, 0.3), rgba(236, 220, 138, 0.1));
-        }
-
-        .img-responsiva {
-            width: 100%;
-            height: auto;
-            max-height: 250px;
-            min-height: 150px;
-            object-fit: cover;
-        }
-
-        .contenido-Card {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .btn-group {
-            flex-wrap: wrap;
-        }
-
-        .btn-group .btn {
-            margin: 2px;
-        }
-
-        .cartaPelicula:hover {
-            transform: scale(1.05);
-            transition: transform 0.3s ease;
-            background-color: rgba(79, 221, 226, 0.416);
-        }
-
-        @media (min-width: 768px) and (max-width: 1024px) {
-            .row-cols-md-5>* {
-                flex: 0 0 auto;
-                width: 33.333333%;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="/assents/css/movie_genero.css">
 </head>
 
 <body>
+    <!--HEADER-->
+    <?php
+    include "../includes/header.php";
+    ?>
 
     <section class="seccion-peliculas">
         <div class="row row-cols-2 row-cols-md-5 g-4">
-            <div class="col">
-                <a href="#" class="cartaPelicula btn card h-100">
-                    <img src="/assents/imag/portada de pelicula/ToyStory2.jpg" class="card-img-top img-responsiva" alt="...">
-                    <div class="contenido-Card card-body d-flex flex-column">
-                        <h5 class="card-title">Toy Story 2</h5>
-                        <div class="btn-group mt-auto">
-                            <button type="button" class="btn btn-outline-danger">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-suit-heart-fill" viewBox="0 0 16 16">
-                                    <path d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1">
-                                    </path>
-                                </svg>
-                                Likes: 100
-                            </button>
-                            <button type="button" class="btn btn-outline-warning">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
-                                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293z">
-                                    </path>
-                                </svg>
-                                Dislike: 0
-                            </button>
+            <?php
+            // Incluir el archivo de conexión a la base de datos
+            include '../config/conexion.php';
+
+            // Verificar si se proporcionó el ID del género en la URL
+            if (isset($_GET['id_genero'])) {
+                // Obtener el ID del género de la URL
+                $id_genero = $_GET['id_genero'];
+
+                // Consulta SQL para obtener los títulos de las películas del género específico
+                $sql = "SELECT m.titulo, m.portada
+            FROM movie m
+            JOIN movie_genero mg ON m.idMovie = mg.Movie_id
+            JOIN genero g ON mg.Genero_id = g.id_Genero
+            WHERE g.id_Genero = $id_genero";
+
+                // Ejecutar la consulta
+                $resultado = mysqli_query($conexion, $sql);
+
+                // Verificar si se obtuvieron resultados
+                if ($resultado) {
+                    // Comenzar el bucle para generar las cartas de películas
+                    while ($fila = mysqli_fetch_assoc($resultado)) {
+            ?>
+                        <div class="col">
+                            <a href="#" class="cartaPelicula btn card h-100">
+                                <img src="<?php echo $fila['portada']; ?>" class="card-img-top img-responsiva" alt="...">
+                                <div class="contenido-Card card-body d-flex flex-column">
+                                    <h5 class="card-title"><?php echo $fila['titulo']; ?></h5>
+                                    <div class="btn-group mt-auto">
+                                        <div class="likesPorciento">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="red" class="bi bi-suit-heart-fill" viewBox="0 0 16 16">
+                                                <path d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1" />
+                                            </svg>
+                                            Likes: 15%
+                                        </div>
+                                        <br>
+                                        <div class="dislikePorcentaje">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="blue" class="bi bi-hand-thumbs-down-fill" viewBox="0 0 16 16">
+                                                <path d="M6.956 14.534c.065.936.952 1.659 1.908 1.42l.261-.065a1.38 1.38 0 0 0 1.012-.965c.22-.816.533-2.512.062-4.51q.205.03.443.051c.713.065 1.669.071 2.516-.211.518-.173.994-.68 1.2-1.272a1.9 1.9 0 0 0-.234-1.734c.058-.118.103-.242.138-.362.077-.27.113-.568.113-.856 0-.29-.036-.586-.113-.857a2 2 0 0 0-.16-.403c.169-.387.107-.82-.003-1.149a3.2 3.2 0 0 0-.488-.9c.054-.153.076-.313.076-.465a1.86 1.86 0 0 0-.253-.912C13.1.757 12.437.28 11.5.28H8c-.605 0-1.07.08-1.466.217a4.8 4.8 0 0 0-.97.485l-.048.029c-.504.308-.999.61-2.068.723C2.682 1.815 2 2.434 2 3.279v4c0 .851.685 1.433 1.357 1.616.849.232 1.574.787 2.132 1.41.56.626.914 1.28 1.039 1.638.199.575.356 1.54.428 2.591" />
+                                            </svg>
+                                            Dislike: 85%
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
                         </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col">
-                <a href="#" class="cartaPelicula btn card h-100">
-                    <img src="/assents/imag/portada de pelicula/ToyStory4.jpg" class="card-img-top img-responsiva" alt="...">
-                    <div class="contenido-Card card-body d-flex flex-column">
-                        <h5 class="card-title">Toy Story 4</h5>
-                        <div class="btn-group mt-auto">
-                            <button type="button" class="btn btn-outline-danger">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-suit-heart-fill" viewBox="0 0 16 16">
-                                    <path d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1">
-                                    </path>
-                                </svg>
-                                Likes: 100
-                            </button>
-                            <button type="button" class="btn btn-outline-warning">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
-                                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293z">
-                                    </path>
-                                </svg>
-                                Dislike: 0
-                            </button>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col">
-                <a href="#" class="cartaPelicula btn card h-100">
-                    <img src="/assents/imag/portada de pelicula/bellayBestia.jpg" class="card-img-top img-responsiva" alt="...">
-                    <div class="contenido-Card card-body d-flex flex-column">
-                        <h5 class="card-title">Bella y la bestia</h5>
-                        <div class="btn-group mt-auto">
-                            <button type="button" class="btn btn-outline-danger">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-suit-heart-fill" viewBox="0 0 16 16">
-                                    <path d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1">
-                                    </path>
-                                </svg>
-                                Likes: 100
-                            </button>
-                            <button type="button" class="btn btn-outline-warning">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
-                                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293z">
-                                    </path>
-                                </svg>
-                                Dislike: 0
-                            </button>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col">
-                <a href="#" class="cartaPelicula btn card h-100">
-                    <img src="/assents/imag/portada de pelicula/jojos.jpg" class="card-img-top img-responsiva" alt="...">
-                    <div class="contenido-Card card-body d-flex flex-column">
-                        <h5 class="card-title">Jojos Bizarre Adventure</h5>
-                        <div class="btn-group mt-auto">
-                            <button type="button" class="btn btn-outline-danger">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-suit-heart-fill" viewBox="0 0 16 16">
-                                    <path d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1">
-                                    </path>
-                                </svg>
-                                Likes: 100
-                            </button>
-                            <button type="button" class="btn btn-outline-warning">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
-                                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293z">
-                                    </path>
-                                </svg>
-                                Dislike: 0
-                            </button>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col">
-                <a href="#" class="cartaPelicula btn card h-100">
-                    <img src="/assents/imag/portada de pelicula/lilo.jpg" class="card-img-top img-responsiva" alt="...">
-                    <div class="contenido-Card card-body d-flex flex-column">
-                        <h5 class="card-title">Lilo y Stich</h5>
-                        <div class="btn-group mt-auto">
-                            <button type="button" class="btn btn-outline-danger">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-suit-heart-fill" viewBox="0 0 16 16">
-                                    <path d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1">
-                                    </path>
-                                </svg>
-                                Likes: 100
-                            </button>
-                            <button type="button" class="btn btn-outline-warning">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
-                                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293z">
-                                    </path>
-                                </svg>
-                                Dislike: 0
-                            </button>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col">
-                <a href="#" class="cartaPelicula btn card h-100">
-                    <img src="/assents/imag/portada de pelicula/spiderman.jpg" class="card-img-top img-responsiva" alt="...">
-                    <div class="contenido-Card card-body d-flex flex-column">
-                        <h5 class="card-title">Spiderman negro</h5>
-                        <div class="btn-group mt-auto">
-                            <button type="button" class="btn btn-outline-danger">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-suit-heart-fill" viewBox="0 0 16 16">
-                                    <path d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1">
-                                    </path>
-                                </svg>
-                                Likes: 100
-                            </button>
-                            <button type="button" class="btn btn-outline-warning">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
-                                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293z">
-                                    </path>
-                                </svg>
-                                Dislike: 0
-                            </button>
-                        </div>
-                    </div>
-                </a>
-            </div>
+            <?php
+                    }
+                } else {
+                    // Manejar el caso de error
+                    echo "Error al ejecutar la consulta: " . mysqli_error($conexion);
+                }
+            } else {
+                echo "No se proporcionó el ID del género.";
+            }
+
+            // Cerrar la conexión a la base de datos
+            mysqli_close($conexion);
+            ?>
         </div>
     </section>
+    <!--FOOTER-->
+    <?php
+    include "../includes/footer.php";
+    ?>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>

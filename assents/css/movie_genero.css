@@ -1,0 +1,75 @@
+body {
+    background-image: url('/assents/imag/fondo_Peliculas_Genero.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.seccion-peliculas {
+    padding: 25px;
+    background: linear-gradient(to bottom, rgba(204, 158, 9, 0.3), rgba(236, 220, 138, 0.1));
+}
+
+.img-responsiva {
+    width: 100%;
+    height: auto;
+    max-height: 250px;
+    min-height: 150px;
+    object-fit: cover;
+}
+
+.contenido-Card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.btn-group {
+    flex-wrap: wrap;
+}
+
+.btn-group .btn {
+    margin: 2px;
+}
+
+.cartaPelicula {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    /* Agrega un ligero sombreado */
+    transition: box-shadow 0.3s ease;
+    /* Agrega un efecto de transición suave */
+}
+
+.cartaPelicula:hover {
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+.card-title {
+    font-size: 1.25rem;
+    /* Tamaño de fuente ligeramente más grande */
+    margin-bottom: 0.5rem;
+    /* Espaciado inferior reducido */
+}
+
+.likesPorciento,
+.dislikePorcentaje {
+    font-size: 0.875rem;
+    /* Tamaño de fuente ligeramente más pequeño */
+    color: #555;
+    /* Color de texto más oscuro */
+    margin-bottom: 0.5rem;
+    /* Espaciado inferior reducido */
+}
+
+.likesPorciento svg,
+.dislikePorcentaje svg {
+    width: 24px;
+    /* Tamaño de icono incrementado */
+    height: 24px;
+    margin-right: 0.5rem;
+    /* Espaciado derecho añadido */
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .row-cols-md-5>* {
+        flex: 0 0 auto;
+        width: 33.333333%;
+    }
+}

@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <style>
         body {
             background-image: url('../assents/imag/fondo_Generos.png');
@@ -50,23 +50,24 @@
     </style>
 </head>
 
+<!--HEADER-->
+<?php
+include "../includes/header.php";
+?>
+
 <body>
-    <!--HEADER-->
-    <?php
-    include "../includes/header.php";
-    ?>
     <div class="row row-cols-2 row-cols-md-4 g-3 m-4 ">
         <?php
         include '../config/conexion.php';
 
-        $sql = "SELECT nomb_genero, imagen FROM cineandes.genero";
+        $sql = "SELECT nomb_genero, imagen, id_Genero FROM cineandes.genero";
         $result = $conexion->query($sql);
 
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
                 echo '<div class="col">
-                <a href="#" class="custom-button btn ms-auto card">
-                    <div style="max-height: 170px; overflow: hidden;">
+                <a href="/views/Movie_gener.php?id_genero=' . $row["id_Genero"] . '" class="custom-button btn ms-auto card">
+                <div style="max-height: 170px; overflow: hidden;">
                         <img src="../assents/imag/generos/' . $row["imagen"] . '" class="card-img-top img-fluid d-none d-md-block" alt="..." style="object-fit: cover; width: 100%; height: 100%;">
                     </div>
                     <div class="card-body">
@@ -87,7 +88,6 @@
     <?php
     include "../includes/footer.php";
     ?>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 
 </html>
