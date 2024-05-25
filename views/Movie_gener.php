@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <!--INCLUDES-->
     <link rel="stylesheet" href="/assents/css/includes.css">
+    <!--Titulo-->
+    <title>Peliculas</title>
     <!--ESTILOS-->
     <link rel="stylesheet" href="/assents/css/movie_genero.css">
 </head>

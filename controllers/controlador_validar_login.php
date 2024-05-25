@@ -1,6 +1,4 @@
 <?php
-include "../config/conexion.php";
-session_start();
 if (!empty($_POST["btnLogear"])) {
     $usuario = $_POST["user"];
     $contraseña = $_POST["contra"];

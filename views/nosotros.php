@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <!--INCLUDES-->
     <link rel="stylesheet" href="/assents/css/includes.css">
+    <!--Titulo-->
+    <title>Nosotros</title>
     <!-- LINK GOOGLE FONT -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../assents/css/nosotros.css">

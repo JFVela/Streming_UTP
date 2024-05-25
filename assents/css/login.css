@@ -1,22 +1,78 @@
-.gradient-custom-2 {
-    /* fallback for old browsers */
-    background: #fccb90;
-    
-    /* Chrome 10-25, Safari 5.1-6 */
-    background: -webkit-linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
-    
-    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    background: linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
-    }
-    
-    @media (min-width: 768px) {
+@media (min-width: 768px) {
     .gradient-form {
-    height: 100vh !important;
+        min-height: 100vh !important;
     }
-    }
-    @media (min-width: 769px) {
+}
+
+@media (min-width: 769px) {
     .gradient-custom-2 {
-    border-top-right-radius: .3rem;
-    border-bottom-right-radius: .3rem;
+        border-top-right-radius: .3rem;
+        border-bottom-right-radius: .3rem;
     }
-    }
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    background-image: url('/assents/imag/fondo_Login.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+section.flex-grow-1 {
+    flex: 1;
+}
+
+.btn_registrar {
+    width: 50%;
+    background-color: #FF004D; /* Color de fondo del botón */
+    color: #fff; /* Color de texto */
+    padding: 10px 20px; /* Espacio interno del botón */
+    border-radius: 10px; /* Bordes redondos */
+    text-decoration: none; /* Quita la decoración de subrayado */
+    transition: width 0.3s ease, box-shadow 0.3s ease; /* Transición suave al cambiar de tamaño y sombra */
+    display: inline-block; /* Para que el botón se comporte como un elemento en línea */
+    text-align: center;
+}
+
+.btn_registrar:hover {
+    width: 50%; /* Ajusta el ancho al 100% al pasar el mouse sobre el botón */
+    box-shadow: 0 4px 9px -4px rgba(0, 0, 0, 0.35); /* Sombra al pasar el mouse */
+    background-color: #7E2553; /* Color de fondo del botón */
+}
+
+.btn_ingresar{
+    width: 100%;
+    background-color: #1D2B53; /* Color de fondo del botón */
+    color: #fff; /* Color de texto */
+    padding: 10px 20px; /* Espacio interno del botón */
+    border-radius: 10px; /* Bordes redondos */
+    text-decoration: none; /* Quita la decoración de subrayado */
+    transition: width 0.3s ease, box-shadow 0.3s ease; /* Transición suave al cambiar de tamaño y sombra */
+    display: inline-block; /* Para que el botón se comporte como un elemento en línea */
+    text-align: center;
+}
+.btn_ingresar:hover{
+    width: 100%;
+    box-shadow: 0 4px 9px -4px rgba(0,0,0,.35);
+    background-color: #FAEF5D; /* Color de fondo del botón */
+}
+
+
+.pequeña_Imagen {
+    background-image: url('/assents/imag/imagen_estilo.jpg');
+    background-size: cover; /* Ajusta el tamaño de la imagen para cubrir completamente el contenedor */
+    background-position: center; /* Alinea el centro horizontal de la imagen */
+    display: flex; /* Usa display:flex para que el contenido se ajuste al tamaño del contenedor */
+    align-items: center; /* Centra verticalmente el contenido */
+}
+
+.section_login {
+    font-family: 'VT323', monospace; /* Aplica la fuente 'Minecraft' al texto dentro del elemento <section> */
+    font-size: 16px; /* Tamaño de la fuente */
+    letter-spacing: 1px; /* Espaciado entre letras */
+    -webkit-font-smoothing: none; /* Desactiva el suavizado de fuentes en navegadores webkit (Safari, Chrome) */
+    -moz-osx-font-smoothing: grayscale; /* Desactiva el suavizado de fuentes en Firefox en macOS */
+}

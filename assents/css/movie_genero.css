@@ -4,8 +4,7 @@ body {
     background-repeat: no-repeat;
 }
 .seccion-peliculas {
-    padding: 25px;
-    background: linear-gradient(to bottom, rgba(204, 158, 9, 0.3), rgba(236, 220, 138, 0.1));
+    padding: 30px;
 }
 
 .img-responsiva {
@@ -39,6 +38,7 @@ body {
 
 .cartaPelicula:hover {
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    color: white;
 }
 
 .card-title {
@@ -52,8 +52,6 @@ body {
 .dislikePorcentaje {
     font-size: 0.875rem;
     /* Tamaño de fuente ligeramente más pequeño */
-    color: #555;
-    /* Color de texto más oscuro */
     margin-bottom: 0.5rem;
     /* Espaciado inferior reducido */
 }
