@@ -13,7 +13,6 @@
     <!--Titulo-->
     <title>CineAndes</title>
     <!--ESTILOS-->
-    <link rel="stylesheet" href="../assents/css/inicio.css">
 </head>
 
 <body>
