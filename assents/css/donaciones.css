@@ -1,221 +1,116 @@
-@import url('https://fonts.googleapis.com/css2?family=Jersey+15&display=swap');
-
-* {
+body {
     margin: 0;
     padding: 0;
-    text-decoration: none;
-    list-style: none;
+    font-family: Arial, sans-serif;
 }
 
-body {
-    background-color: navy;
-    font-family: 'Bebas Neue', cursive;
-    color: beige;
-}
-
-body, html {
-    height: 100%;
-    margin: 0;
-}
-.container {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start; /* Centra en la parte superior */
-    height: 70%;
-}
-.donation-gallery {
-    position: relative;
-}
-.gallery {
-    overflow: hidden;
-    position: relative;
-}
-.gallery img {
-    width: 1000px; /* Tamaño fijo para todas las imágenes */
-    height: 500px; /* Tamaño fijo para todas las imágenes */
-    border-radius: 30px;
-    display: block;
-}
-.prev,
-.next {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(255, 255, 255, 0.5);
-    border: none;
-    color: #333;
-    cursor: pointer;
-    padding: 10px;
-    font-size: 18px;
-    z-index: 1;
-    border-radius: 40%;
-}
-.prev {
-    left: 0;
-}
-.next {
-    right: 0;
-}
-.donation-message {
-    position: absolute;
-    top: 50%;
-    font-size: 70px;
-    font-weight: bolder;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    display: none;
-    color: beige;
-    -webkit-text-stroke-width: 1px; /* Ancho del borde */
-    -webkit-text-stroke-color: black; /* Color del borde */
-    font-family: 'Bebas Neue', cursive;
-}
-.donation-message-2 {
-    position: absolute;
-    top: 50%;
-    font-size: 50px;
-    font-weight: bolder;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    display: none;
-    color: beige;
-    -webkit-text-stroke-width: 1px; /* Ancho del borde */
-    -webkit-text-stroke-color: black; /* Color del borde */
-    font-family: 'Bebas Neue', cursive;
-}
-.donation-message button {
-    background-color: rgb(255, 0, 0);
-    font-weight: bold;
-    border: none;
-    border-radius: 15%;
-    padding: 10px 20px;
-    font-size: 18px;
-    color: azure;
-    -webkit-text-stroke-width: 0px; /* Ancho del borde */
-    -webkit-text-stroke-color: none; /* Color del borde */
-    cursor: pointer;
-    margin-top: 10px;
-}
-.donation-message-2 button {
-    background-color: rgb(255, 0, 0);
-    font-weight: bold;
-    border: none;
-    border-radius: 15%;
-    padding: 10px 20px;
-    font-size: 18px;
-    color: azure;
-    -webkit-text-stroke-width: 0px; /* Ancho del borde */
-    -webkit-text-stroke-color: none; /* Color del borde */
-    cursor: pointer;
-    margin-top: 10px;
-}
-.donation-levels, .testimonials, .donor-benefits, .donation-stats, .carousel {
-    background-color: #1a1a1a;
-    border-radius: 10px;
-    padding: 20px;
-    margin: 20px 0;
-    color: beige;
-    font-family: 'Bebas Neue', cursive;
-}
-.donation-levels h2, .testimonials h2, .donor-benefits h2, .donation-stats h2, .carousel h2 {
-    text-align: center;
-    margin-bottom: 20px;
-}
-.level, .testimonial, .benefit, .carousel-item {
-    margin: 10px 0;
-    padding: 10px;
-    border-radius: 5px;
-    background-color: #333;
-    transition: transform 0.3s ease, background-color 0.3s ease;
-}
-.level:hover, .testimonial:hover, .benefit:hover, .carousel-item:hover {
-    transform: scale(1.05);
-    background-color: #444;
-}
-.level button, .testimonial button, .benefit button, .carousel-item button {
-    background-color: gold;
-    border: none;
-    padding: 10px 20px;
-    font-size: 18px;
-    cursor: pointer;
-    margin-top: 10px;
-    transition: background-color 0.3s ease;
-}
-.level button:hover, .testimonial button:hover, .benefit button:hover, .carousel-item button:hover {
-    background-color: darkorange;
-}
-.donation-stats {
-    position: relative;
-    text-align: center;
-    z-index: 2;
-    padding: 40px;
-    color: white;
-    background: url('assents/imag/fondos.jpg') no-repeat center center/cover;
-}
-
-.donation-stats img{
-    z-index: -1;
-}
-.donation-stats::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
+.carousel-item img {
     width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 0;
-    border-radius: 10px;
+    height: auto;
+    max-height: 450px;
+    object-fit: cover;
 }
-.donation-stats h2, .donation-stats h3 {
-    position: relative;
-    z-index: 1;
-}
-.donation-stats h3 {
-    font-size: 36px;
-    margin: 20px 0;
-}
-.carousel {
-    position: relative;
+
+.contenidoDonante {
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 2%;
+    background-color: #f8f9fa;
 }
-.carousel-container {
+
+.stats-container {
     display: flex;
-    overflow: hidden;
-    width: 80%;
+    justify-content: space-around;
+    background-color: #000;
+    border-radius: 15px;
+    padding: 20px;
+    color: white;
+    font-family: Arial, sans-serif;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 15px;
+    flex: 1 1 20%;
+    /* Adjust this to fit four items per row */
+    min-width: 150px;
+    /* Ensure a minimum width for smaller screens */
+}
+
+.stat-value {
+    font-size: 2em;
+    /* Use em for relative sizing */
+    font-weight: bold;
+    color: #ff4d4d;
+}
+
+.stat-label {
+    font-size: 1em;
+    /* Use em for relative sizing */
+}
+
+.cartasInformación {
+    padding: 5%;
+    padding-top: 2%;
+}
+
+/* Media queries for smaller screens */
+@media (max-width: 768px) {
+    .stat-item {
+        flex: 1 1 100%;
+        min-width: 100%;
+        padding: 10px 0;
+        border: none;
+    }
+
+    .stat-value {
+        font-size: 1.5em;
+    }
+
+    .stat-label {
+        font-size: 0.875em;
+    }
+}
+
+h1 {
+    text-align: center;
+}
+
+.donacionDeslizar {
+    max-width: 800px;
     margin: 0 auto;
+    padding-left: 2%;
+    padding-right: 2%;
 }
-.carousel-item {
-    flex: 0 0 30%;
-    margin: 0 5px;
-    opacity: 0.5;
-    transform: scale(0.8);
-    transition: opacity 0.3s ease, transform 0.3s ease;
+
+.btn-warning {
+    color: #fff;
+    background-color: #ff9800;
+    border-color: #ff9800;
 }
-.carousel-item.active {
-    flex: 0 0 40%;
-    opacity: 1;
-    transform: scale(1);
+
+.card {
+    border-radius: 15px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
-.carousel-button {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(255, 255, 255, 0.5);
-    border: none;
-    color: #333;
-    cursor: pointer;
-    padding: 10px;
-    font-size: 18px;
-    z-index: 1;
-    border-radius: 50%;
+
+.donation-form {
+    padding: 20px;
 }
-.carousel-button.prev {
-    left: 0;
+
+.botonDonacion {
+    width: 180px;
+    margin: 0 auto;
+    display: block;
 }
-.carousel-button.next {
-    right: 0;
+
+#paypal-donate-button-container img {
+    width: 100%;
+    height: auto;
 }

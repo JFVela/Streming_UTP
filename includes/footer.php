@@ -2,7 +2,7 @@
     <ul class="nav justify-content-center border-bottom pb-3 mb-3">
         <li class="nav-item"><a href="../views/inicio.php" class="nav-link px-2 text-muted">Home</a></li>
         <li class="nav-item"><a href="../views/preguntas.php" class="nav-link px-2 text-muted">FAQs</a></li>
-        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Donar</a></li>
+        <li class="nav-item"><a href="../views/donate.php" class="nav-link px-2 text-muted">Donar</a></li>
         <li class="nav-item"><a href="../views/nosotros.php" class="nav-link px-2 text-muted">About</a></li>
     </ul>
     <ul class="social-icons list-unstyled d-flex justify-content-center">
