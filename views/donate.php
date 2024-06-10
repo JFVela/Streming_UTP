@@ -63,23 +63,42 @@
         </button>
     </div>
 
+    <?php
+    $query_liquidez = "SELECT SUM(monto) AS liquidez_total FROM donación";
+    $result_liquidez = mysqli_query($conexion, $query_liquidez);
+    $row_liquidez = mysqli_fetch_assoc($result_liquidez);
+    $liquidez_total = $row_liquidez['liquidez_total'];
+
+    $query_participantes = "SELECT COUNT(DISTINCT id_Usuarios) AS total_participantes FROM donación";
+    $result_participantes = mysqli_query($conexion, $query_participantes);
+    $row_participantes = mysqli_fetch_assoc($result_participantes);
+    $total_participantes = $row_participantes['total_participantes'];
+
+    $query_donaciones = "SELECT COUNT(id_Usuarios) AS total_donaciones FROM donación";
+    $result_donaciones = mysqli_query($conexion, $query_donaciones);
+    $row_donaciones = mysqli_fetch_assoc($result_donaciones);
+    $total_donaciones = $row_donaciones['total_donaciones'];
+
+    $promedioDonaciones = ($liquidez_total / $total_donaciones);
+    ?>
+
     <div class="contenidoDonante">
         <div class="stats-container">
             <div class="stat-item">
-                <div class="stat-value">$260.1M</div>
-                <div class="stat-label">TOTAL LIQUIDITY RAISED</div>
+                <div class="stat-value">$<?php echo number_format($liquidez_total, 2); ?></div>
+                <div class="stat-label">LIQUIDEZ TOTAL OBTENIDA </div>
             </div>
             <div class="stat-item">
-                <div class="stat-value">5004</div>
-                <div class="stat-label">TOTAL PROJECTS</div>
+                <div class="stat-value"><?php echo number_format($total_participantes); ?></div>
+                <div class="stat-label">TOTAL DE PARTICIPANTES</div>
             </div>
             <div class="stat-item">
-                <div class="stat-value">573,421</div>
-                <div class="stat-label">TOTAL PARTICIPANTS</div>
+                <div class="stat-value"><?php echo number_format($total_donaciones); ?></div>
+                <div class="stat-label">TOTAL DE DONACIONES</div>
             </div>
             <div class="stat-item">
-                <div class="stat-value">$290.5M</div>
-                <div class="stat-label">TOTAL VALUES LOCKED</div>
+                <div class="stat-value"><?php echo number_format($promedioDonaciones, 2); ?>$</div>
+                <div class="stat-label">PROMEDIO POR DONACIÓN</div>
             </div>
         </div>
     </div>
@@ -176,6 +195,7 @@
     </div>
 
     <script>
+        var id_usuario_scrip = <?php echo $_SESSION['idUsuario']; ?>;
         document.addEventListener("DOMContentLoaded", function(event) {
             PayPal.Donation.Button({
                 env: 'sandbox',
@@ -194,11 +214,30 @@
                     const payerName = params.name;
                     const donationDate = new Date().toLocaleString();
                     const campaign = document.getElementById('campaign').value;
+
+                    console.log(`ID de Usuario: ${id_usuario_scrip}`);
                     console.log(`ID de Transacción: ${transactionId}`);
                     console.log(`Estado: ${status}`);
                     console.log(`Monto: ${amount} ${currency}`);
                     console.log(`Campaña: ${campaign}`);
                     console.log(`Fecha de donación: ${donationDate}`);
+
+                    // Enviar los datos al servidor usando AJAX
+                    const xhr = new XMLHttpRequest();
+                    xhr.open("POST", "../controllers/insert_donation.php", true);
+                    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                    xhr.onreadystatechange = function() {
+                        if (xhr.readyState === 4 && xhr.status === 200) {
+                            // Donación registrada con éxito en la base de datos
+                            console.log(xhr.responseText);
+                        }
+                    };
+                    xhr.send("idTransaccion=" + encodeURIComponent(transactionId) +
+                        "&amount=" + encodeURIComponent(amount) +
+                        "&campaign=" + encodeURIComponent(campaign) +
+                        "&user_id=" + encodeURIComponent(id_usuario_scrip) +
+                        "&estado=" + encodeURIComponent(status) +
+                        "&fecha=" + encodeURIComponent(donationDate));
                 },
                 onCancel: function(data) {
                     alert("Donación cancelada");
@@ -216,6 +255,7 @@
             }).render('#paypal-donate-button-container');
         });
     </script>
+
 
     <!--FOOTER-->
     <?php
