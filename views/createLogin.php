@@ -14,7 +14,7 @@ include '../controllers/controlador_registrar_usuario.php';
     <!--Includes-->
     <link rel="stylesheet" href="/assents/css/includes.css">
     <!--Title-->
-    <title>Registrar</title>
+    <title>Crear Usuario</title>
     <!--Styles-->
     <link rel="stylesheet" href="../assents/css/login.css">
     <!--Sweet Alert-->

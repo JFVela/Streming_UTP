@@ -13,122 +13,55 @@
     <!--Titulo-->
     <title>CineAndes</title>
     <!--ESTILOS-->
+    <link rel="stylesheet" href="../assents/css/inicio.css">
 </head>
 
 <body>
+
+    <!--HEADER-->
     <?php
     include "../includes/header.php";
+    include "../controllers/controlador_inicio.php";
     ?>
-    <!-- CONTENIDO -->
-    <div class="header-content container">
-        <div class="header-1">
-            <img src="../assents/imag/PROTOTIPO.jpeg" alt="">
-            <a href="#" class="btn-2">Ver ahora</a>
-        </div>
-        <div class="header-2">
-            <h1>Las mejores <br> Peliculas </h1>
-            <img src="../assents/imag/Play.png" alt="">
-        </div>
-    </div>
+    <!--FIN HEADER-->
 
-
-
-    <!-- SECCION DE PELICULAS -->
-    <section class="movies container">
-        <h2>Peliculas mas vistas</h2>
-        <hr>
-        <div class="box-container-1">
-            <div class="box-1">
-                <div class="content">
-                    <img src="../assents/imag/fondoLogin.jpeg" alt="">
-                    <h3>Pelicula en HD</h3>
-                    <p>
-                        Este es mi primer avance de nuestro trabajo de innovación.
-                    </p>
+    <?php if (!empty($movies_by_genre)) : ?>
+        <?php foreach ($movies_by_genre as $genre => $movies) : ?>
+            <section class="Grupo_Cartas ">
+                <h1 class="Titulo_genero"><?php echo htmlspecialchars($genre); ?></h1>
+                <div class="row row-cols-2 row-cols-sm-2 row-cols-md-3 row-cols-lg-6 g-4">
+                    <?php foreach ($movies as $movie) : ?>
+                        <div class="col">
+                            <a href="#" class="Cartas btn card h-100">
+                                <img src="<?php echo htmlspecialchars($movie['portada']); ?>" class="card-img-top" alt="<?php echo htmlspecialchars($movie['titulo']); ?>">
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        <h4><?php echo htmlspecialchars($movie['titulo']); ?></h4>
+                                    </h5>
+                                </div>
+                                <div class="card-footer">
+                                    <h6>
+                                        <i class="bi bi-star-fill" style="color: yellow;"></i> Likes: <?php echo htmlspecialchars($movie['num_likes']); ?>
+                                    </h6>
+                                    <h6>
+                                        <i class="bi bi-emoji-dizzy-fill" style="color: red;"></i> Dislikes: <?php echo htmlspecialchars($movie['num_dislikes']); ?>
+                                    </h6>
+                                </div>
+                            </a>
+                        </div>
+                    <?php endforeach; ?>
                 </div>
-            </div>
-            <div class="box-1">
-                <div class="content">
-                    <img src="../assents/imag/fondoLogin.jpeg" alt="">
-                    <h3>Pelicula en HD</h3>
-                    <p>
-                        Este es mi primer avance de nuestro trabajo de innovación.
-                    </p>
-                </div>
-            </div>
-            <div class="box-1">
-                <div class="content">
-                    <img src="../assents/imag/fondoLogin.jpeg" alt="">
-                    <h3>Pelicula en HD</h3>
-                    <p>
-                        Este es mi primer avance de nuestro trabajo de innovación.
-                    </p>
-                </div>
-            </div>
-            <div class="box-1">
-                <div class="content">
-                    <img src="../assents/imag/fondoLogin.jpeg" alt="">
-                    <h3>Pelicula en HD</h3>
-                    <p>
-                        Este es mi primer avance de nuestro trabajo de innovación.
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="load-more" id="load-more-1"> Cargar mas</div>
-    </section>
-
-    <!-- Peliculas de Accion-->
-    <section class="movies container">
-        <h2>Peliculas de accion</h2>
-        <hr>
-        <div class="box-container-2">
-            <div class="box-2">
-                <div class="content">
-                    <img src="../assents/imag/fondoLogin.jpeg" alt="">
-                    <h3>Pelicula en HD</h3>
-                    <p>
-                        Este es mi primer avance de nuestro trabajo de innovación.
-                    </p>
-                </div>
-            </div>
-            <div class="box-2">
-                <div class="content">
-                    <img src="../assents/imag/fondoLogin.jpeg" alt="">
-                    <h3>Pelicula en HD</h3>
-                    <p>
-                        Este es mi primer avance de nuestro trabajo de innovación.
-                    </p>
-                </div>
-            </div>
-            <div class="box-2">
-                <div class="content">
-                    <img src="../assents/imag/fondoLogin.jpeg" alt="">
-                    <h3>Pelicula en HD</h3>
-                    <p>
-                        Este es mi primer avance de nuestro trabajo de innovación.
-                    </p>
-                </div>
-            </div>
-            <div class="box-2">
-                <div class="content">
-                    <img src="../assents/imag/fondoLogin.jpeg" alt="">
-                    <h3>Pelicula en HD</h3>
-                    <p>
-                        Este es mi primer avance de nuestro trabajo de innovación.
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="load-more" id="load-more-2"> Cargar mas</div>
-    </section>
+            </section>
+        <?php endforeach; ?>
+    <?php endif; ?>
 
     <!--FOOTER-->
     <?php
     include "../includes/footer.php";
     ?>
+    <!--FIN FOOTER-->
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 
 </html>
