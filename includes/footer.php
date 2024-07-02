@@ -12,3 +12,4 @@
     </ul>
     <p class="text-center text-muted">© 2021 Company, Inc</p>
 </footer>
+<script src="/assents/script/chatBot.js"></script>
