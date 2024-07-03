@@ -1,11 +1,23 @@
 <?php
+
+//BASE DE DATOS LOCAL
 $server = "localhost";
 $user = "root";
 $pass = "";
 $bd = "cineandes";
 
+/*
+//BASE DE DATOS EN LA NUBE
+$server = "b3gi50wd4cjp04rkeioh-mysql.services.clever-cloud.com"; 
+$user = "ujodavwbkvtbxg1u"; 
+$pass = "sCKOdOXeu0mH8yNxoEXI"; 
+$bd = "b3gi50wd4cjp04rkeioh"; 
+*/
+
 $conexion = new mysqli($server, $user, $pass, $bd);
-if ($conexion->connect_errno) {
-    die("Conexion fallida" . $conexion->connect_errno);
+
+// Verificar la conexión
+if ($conexion->connect_error) {
+    die("Conexión fallida: " . $conexion->connect_error);
 }
-?>
+

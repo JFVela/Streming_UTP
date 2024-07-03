@@ -299,6 +299,7 @@ mysqli_close($conexion);
             $('#myTable1').DataTable();
         });
     </script>
+
     <script>
         const ctx = document.getElementById('zScoreChart').getContext('2d');
 
@@ -390,6 +391,7 @@ mysqli_close($conexion);
             }
         });
     </script>
+
     <script>
         const variable = document.getElementById('Grafico').getContext('2d');
 

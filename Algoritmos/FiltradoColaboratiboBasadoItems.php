@@ -388,7 +388,7 @@ $all_movies = array_unique($all_movies);
                 var selected_user = $('#selected_user').val();
 
                 $.ajax({
-                    url: '/get_recommendations.php',
+                    url: '../Algoritmos/get_recommendations.php',
                     type: 'POST',
                     data: {
                         selected_user: selected_user
