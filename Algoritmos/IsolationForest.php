@@ -137,6 +137,7 @@ mysqli_close($conexion);
 </head>
 
 <body>
+    <!--
     <div class="ContenidoDonacion">
         <h1 class="titulos">Donaciones</h1>
         <div class="table-responsive">
@@ -201,6 +202,7 @@ mysqli_close($conexion);
 
         </div>
     </div>
+    -->
 
 
     <div class="ContenidoDonacion" style="border-radius: 20px; margin: 2%; padding: 1%; border: 2px dashed;">
