@@ -4,7 +4,7 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-// Inner Join
+// Definir la tabla y las columnas
 $table = <<<EOT
  (
         SELECT 
@@ -13,7 +13,7 @@ $table = <<<EOT
         u.telefono as c,
         u.correo as d,
         d.monto as e,
-        (d.monto - stats.avg_monto) / stats.std_monto AS f
+        ABS((d.monto - stats.avg_monto) / stats.std_monto) AS f
         FROM 
         donación d
         INNER JOIN usuarios u ON d.id_Usuarios = u.id_Usu
@@ -28,7 +28,7 @@ $table = <<<EOT
             id_Usuarios
         ) AS stats ON d.id_Usuarios = stats.id_Usuarios
         WHERE 
-        (d.monto - stats.avg_monto) / stats.std_monto > 3
+        ABS((d.monto - stats.avg_monto) / stats.std_monto) > 3
  ) temp
 EOT;
 
@@ -37,12 +37,12 @@ $primaryKey = 'a';
 
 // Columnas de la base de datos que deben ser leídas y enviadas de vuelta a DataTables
 $columns = array(
-    array('db' => 'a', 'dt' => 0),
-    array('db' => 'b', 'dt' => 1),
-    array('db' => 'c', 'dt' => 2),
-    array('db' => 'd', 'dt' => 3),
-    array('db' => 'e', 'dt' => 4),
-    array('db' => 'f', 'dt' => 5)
+    array('db' => 'a', 'dt' => 'id_Usuarios'),
+    array('db' => 'b', 'dt' => 'nombreUsuario'),
+    array('db' => 'c', 'dt' => 'telefono'),
+    array('db' => 'd', 'dt' => 'correo'),
+    array('db' => 'e', 'dt' => 'monto'),
+    array('db' => 'f', 'dt' => 'puntuacion_z')
 );
 
 // Información de conexión a la base de datos
@@ -56,12 +56,6 @@ $dbDetails = array(
 // Incluir la clase de procesamiento de consultas SQL
 require '../../ssp.class.php';
 
-// Depuración: Verificar conexión a la base de datos
-$conn = new mysqli($dbDetails['host'], $dbDetails['user'], $dbDetails['pass'], $dbDetails['db']);
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-
 // Depuración: Salida de datos en formato JSON
 try {
     $json = SSP::simple($_GET, $dbDetails, $table, $primaryKey, $columns);
@@ -70,3 +64,4 @@ try {
 } catch (Exception $e) {
     echo 'Caught exception: ',  $e->getMessage(), "\n";
 }
+?>
