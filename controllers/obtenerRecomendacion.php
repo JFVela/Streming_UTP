@@ -1,42 +1,42 @@
 <?php
-//CONEXION A BASE DE DATOS
+// CONEXION A BASE DE DATOS
 include '../config/conexion.php';
-
 
 // Consulta SQL para obtener los datos requeridos
 $sql = "SELECT 
-            u.id_Usu AS IdUsuario,
-            u.nombreUsuario AS NombreUsuario,
-            h.Movie_id AS IdMovie,
-            m.titulo AS TitleMovie,
-            h.reaccion AS Reaccion
+            usuarios.id_Usu as user_id,
+            usuarios.nombreUsuario as a,
+            movie.titulo as b,
+            historial.reaccion as c
         FROM 
-            historial h
+            historial
         JOIN 
-            usuarios u ON h.Usuarios_id = u.id_Usu
+            usuarios ON historial.Usuarios_id = usuarios.id_Usu
         JOIN 
-            movie m ON h.Movie_id = m.idMovie";
+            movie ON historial.Movie_id = movie.idMovie";
 
 $result = $conexion->query($sql);
-$result_html = $conexion->query($sql);
 
 // Arreglo para almacenar las reacciones de los usuarios
 $ratings = [];
+$usuario_id_map = [];
 
 // Procesar los resultados y llenar el arreglo $ratings
 if ($result->num_rows > 0) {
     while ($fila = $result->fetch_assoc()) {
-        $usuarioDB = $fila['NombreUsuario'];
-        $peliculaDB = $fila['TitleMovie'];
-        $reaccionDB = $fila['Reaccion'];
+        $usuarioID = $fila['user_id'];
+        $usuarioDB = $fila['a'];
+        $peliculaDB = $fila['b'];
+        $reaccionDB = $fila['c'];
 
         // Verificar si el usuario ya está en el arreglo, sino, agregarlo
-        if (!isset($ratings[$usuarioDB])) {
-            $ratings[$usuarioDB] = [];
+        if (!isset($ratings[$usuarioID])) {
+            $ratings[$usuarioID] = [];
+            $usuario_id_map[$usuarioID] = $usuarioDB; // Mapear ID a nombre de usuario
         }
 
         // Asignar la reacción a la película para el usuario
-        $ratings[$usuarioDB][$peliculaDB] = $reaccionDB;
+        $ratings[$usuarioID][$peliculaDB] = $reaccionDB;
     }
 } else {
     echo "No se encontraron resultados.";
@@ -97,13 +97,13 @@ foreach ($item_matrix as $item1 => $ratings1) {
 }
 
 // Función para obtener recomendaciones para un usuario
-function get_recommendations($user, $ratings, $item_similarity, $threshold = 0.1)
+function get_recommendations($user_id, $ratings, $item_similarity, $threshold = 0.1)
 {
-    if (!isset($ratings[$user])) {
+    if (!isset($ratings[$user_id])) {
         return [];
     }
 
-    $user_ratings = $ratings[$user];
+    $user_ratings = $ratings[$user_id];
     $recommendations = [];
 
     // Considerar ítems no reaccionados y no vistos
@@ -131,43 +131,4 @@ function get_recommendations($user, $ratings, $item_similarity, $threshold = 0.1
 }
 
 
-if (isset($_POST['selected_user'])) {
-    $selected_user = $_POST['selected_user'];
-    //$selected_user = $_POST['selected_user'];
-    $recommendations = get_recommendations($selected_user, $ratings, $item_similarity);
-
-    if (!empty($recommendations)) {
-        echo "<h2>Recomendaciones para $selected_user</h2>";
-        echo '<div class="table-responsive">
-            <table id="myTableRecomendacion" class="display" cellspacing="0" width="100%">
-                <thead>
-                    <tr>
-                        <th>Película</th>
-                        <th>Valor de Recomendación</th>
-                        <th>Porcentaje de Recomendación</th>
-                    </tr>
-                </thead>
-                <tfoot>
-                    <tr>
-                        <th>Película</th>
-                        <th>Valor de Recomendación</th>
-                        <th>Porcentaje de Recomendación</th>
-                    </tr>
-                </tfoot>
-                <tbody>';
-        foreach ($recommendations as $item => $recommendation) {
-            echo "<tr>
-                <td>$item</td>
-                <td>" . ($recommendation) . "</td>
-                <td>" . round($recommendation * 100, 2) . " %</td>
-            </tr>";
-        }
-        echo '</tbody>
-            </table>
-        </div>';
-    } else {
-        echo "<p>No se encontraron similitudes.</p>";
-    }
-} else {
-    echo "<p>Elija un usuario para ver recomendaciones.</p>";
-}
+?>

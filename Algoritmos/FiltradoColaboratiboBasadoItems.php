@@ -37,6 +37,7 @@ if ($result->num_rows > 0) {
 
         // Asignar la reacción a la película para el usuario
         $ratings[$usuarioDB][$peliculaDB] = $reaccionDB;
+        echo $usuarioDB."||".$peliculaDB."=>". $ratings[$usuarioDB][$peliculaDB]."<br>";
     }
 } else {
     echo "No se encontraron resultados.";
@@ -124,6 +125,7 @@ function get_recommendations($user, $ratings, $item_similarity, $threshold = 0.1
             }
         }
     }
+
 
     arsort($recommendations);
 
