@@ -4,7 +4,7 @@ session_start();
 include '../controllers/controlador_validar_login.php';
 ?>
 <header class="p-3 mb-3 border-bottom" style="background-color: #333333;">
-    <nav class="navbar navbar-expand-lg ">
+    <nav class="navbar navbar-expand-lg">
         <div class="container">
             <a class="navbar-brand" href="../views/inicio.php">
                 <img class="logo_Imagen" src="../assents/imag/logoAndes.png" alt="logo">
@@ -15,7 +15,7 @@ include '../controllers/controlador_validar_login.php';
                         <a class="nav-link" href="../views/inicio.php">Inicio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Peliculas</a>
+                        <a class="nav-link" href="/views/recomendaciones.php">Cine Total</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Categoria</a>
@@ -45,34 +45,35 @@ include '../controllers/controlador_validar_login.php';
                 </button>
                 <?php
                 if (isset($_SESSION["idUsuario"])) {
+                    $saludo ="Hola! " .$_SESSION["nombre_Usuario"] ;
                     echo '<div class="dropdown text-end">
-                                <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <img class="perfil" src="/assents/imag/avatar/user1.jpg" alt="mdo" width="40" height="40" class="rounded-circle">
-                                </a>
-                                <ul class="dropdown-menu text-small dropdown-menu-end" aria-labelledby="dropdownUser1" style="">
-                                    <li><span class="dropdown-item-text">¡Bienvenido ' . $_SESSION["nombreUsuario"] . '!</span></li>
-                                    <li><a class="dropdown-item" href="#">Mi Espacio</a></li>
-                                    <li><a class="dropdown-item" href="#">Configuración</a></li>
-                                    <li><a class="dropdown-item" href="#">Ayuda</a></li>
-                                    <li>
-                                        <hr class="dropdown-divider">
-                                    </li>
-                                    <li><a class="dropdown-item" href="/controllers/controlador_cerrar_seccion.php">Cerrar Sesión</a></li>
-                                </ul>
-                            </div>';
+                            <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                                <img class="perfil" src="/assents/imag/avatar/user1.jpg" alt="mdo" width="40" height="40" class="rounded-circle">
+                            </a>
+                            <ul class="dropdown-menu text-small dropdown-menu-end" aria-labelledby="dropdownUser1" style="">
+                                <li style="background-color: #FAEF5D;"><span class="dropdown-item-text">' . $saludo . '</span></li>
+                                <li><a class="dropdown-item" href="/views/recomendaciones.php">Para ti!</a></li>
+                                <li><a class="dropdown-item" href="#">Configuración</a></li>
+                                <li><a class="dropdown-item" href="/views/preguntas.php">Ayuda</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="/controllers/controlador_cerrar_seccion.php">Cerrar Sesión</a></li>
+                            </ul>
+                        </div>';
                 } else {
                     echo '<div class="dropdown text-end">
-                                <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <img class="perfil" src="/assents/imag/avatar/user.png" alt="mdo" width="40" height="40" class="rounded-circle">
-                                </a>
-                                <ul class="dropdown-menu text-small dropdown-menu-end" aria-labelledby="dropdownUser1" style="">
-                                    <li><a class="dropdown-item" href="/views/login.php">Login</a></li>
-                                    <li>
-                                        <hr class="dropdown-divider">
-                                    </li>
-                                    <li><a class="dropdown-item" href="/views/createLogin.php">Regístrate</a></li>
-                                </ul>
-                            </div>';
+                            <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                                <img class="perfil" src="/assents/imag/avatar/user.png" alt="mdo" width="40" height="40" class="rounded-circle">
+                            </a>
+                            <ul class="dropdown-menu text-small dropdown-menu-end" aria-labelledby="dropdownUser1" style="">
+                                <li><a class="dropdown-item" href="/views/login.php">Login</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="/views/createLogin.php">Regístrate</a></li>
+                            </ul>
+                        </div>';
                 }
                 ?>
             </div>

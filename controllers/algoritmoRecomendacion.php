@@ -6,7 +6,9 @@ include '../config/conexion.php';
 $sql = "SELECT 
             usuarios.id_Usu as user_id,
             usuarios.nombreUsuario as a,
+            movie.idMovie as movie_id,
             movie.titulo as b,
+            movie.portada as portada,
             historial.reaccion as c
         FROM 
             historial
@@ -20,19 +22,27 @@ $result = $conexion->query($sql);
 // Arreglo para almacenar las reacciones de los usuarios
 $ratings = [];
 $usuario_id_map = [];
+$movie_id_map = [];
 
 // Procesar los resultados y llenar el arreglo $ratings
 if ($result->num_rows > 0) {
     while ($fila = $result->fetch_assoc()) {
         $usuarioID = $fila['user_id'];
         $usuarioDB = $fila['a'];
+        $peliculaID = $fila['movie_id'];
         $peliculaDB = $fila['b'];
+        $portadaDB = $fila['portada'];
         $reaccionDB = $fila['c'];
 
         // Verificar si el usuario ya está en el arreglo, sino, agregarlo
         if (!isset($ratings[$usuarioID])) {
             $ratings[$usuarioID] = [];
             $usuario_id_map[$usuarioID] = $usuarioDB; // Mapear ID a nombre de usuario
+        }
+
+        // Verificar si la película ya está en el mapa de IDs, sino, agregarla
+        if (!isset($movie_id_map[$peliculaDB])) {
+            $movie_id_map[$peliculaDB] = ['id' => $peliculaID, 'portada' => $portadaDB];
         }
 
         // Asignar la reacción a la película para el usuario
@@ -129,6 +139,3 @@ function get_recommendations($user_id, $ratings, $item_similarity, $threshold = 
 
     return $recommendations;
 }
-
-
-?>

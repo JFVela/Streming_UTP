@@ -12,8 +12,7 @@ if (!empty($_POST["btnLogear"])) {
         // Verificar la contraseña usando password_verify
         if (password_verify($contraseña, $datos->contraseña)) {
             $_SESSION["idUsuario"] = $datos->id_Usu;
-            $_SESSION["nombreUsuario"] = $datos->nomb1;
-            $_SESSION["apellidoUsuario"] = $datos->ape1;
+            $_SESSION["nombre_Usuario"] = $datos->nombreUsuario;
             header("location: ../../../views/inicio.php");
         } else {
             echo 'Contraseña incorrecta';

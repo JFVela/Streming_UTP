@@ -13,13 +13,12 @@
     <!--INCLUDES-->
     <link rel="stylesheet" href="/assents/css/includes.css">
     <!--Titulo-->
-    <title>Recomendaciones</title>
+    <title>CineTotal</title>
     <!--FAVICON-->
-    <link rel="icon" type="image/png" href="/assents/imag/favicon/recomendacion.png">
+    <link rel="icon" type="image/png" href="/assents/imag/favicon/cine.png">
     <!--ESTILOS-->
     <link rel="stylesheet" href="../assents/css/inicio.css">
     <link rel="stylesheet" href="../assents/css/cineTotal.css">
-
 </head>
 
 <body>
@@ -30,48 +29,39 @@
     ?>
     <!--FIN HEADER-->
 
-    <!--Mostrar Recomendaciones-->
+    <!--Mostrar toda las peliculas-->
     <?php
-    include "../controllers/algoritmoRecomendacion.php";
+    include "../controllers/obtenerCineTotal.php";
 
     if (isset($_SESSION['idUsuario'])) {
-        $idUsuario = $_SESSION['idUsuario'];
-        // Obtener y mostrar las recomendaciones para el usuario especificado
-        $recomendaciones = get_recommendations($idUsuario, $ratings, $item_similarity);
-        if (!empty($recomendaciones)) {
     ?>
-            <section class="Grupo_Cartas">
-                <h1 class="Titulo_genero"><?php echo "¡Películas que te recomiendo, {$usuario_id_map[$idUsuario]}!"; ?></h1>
-                <div class="row row-cols-2 row-cols-sm-2 row-cols-md-3 row-cols-lg-6 g-4">
-                    <?php
-                    foreach ($recomendaciones as $pelicula => $valor) {
-                        $valor = round($valor * 100, 2);
-                        $peliculaID = $movie_id_map[$pelicula]['id'];
-                        $portada = $movie_id_map[$pelicula]['portada'];
-                    ?>
-                        <div class="col">
-                            <a href="#" class="Cartas btn card h-100">
-                                <img src="<?php echo $portada; ?>" class="card-img-top" alt="<?php echo $pelicula; ?>">
-                                <div class="card-body">
-                                    <h5 class="card-title"><?php echo $pelicula; ?></h5>
-                                </div>
-                                <div class="card-footer">
-                                    <h6>
-                                        <i class="bi bi-star-fill" style="color: yellow;"></i> Recomendado: <?php echo $valor; ?>%
-                                    </h6>
-                                </div>
-                            </a>
-                        </div>
-                    <?php
-                    }
-                    ?>
-                </div>
-            </section>
-        <?php
-        } else {
-            echo "No hay recomendaciones disponibles para el usuario {$usuario_id_map[$idUsuario]}.";
-        }
-    } else { ?>
+        <section class="Grupo_Cartas">
+            <h1 class="Titulo_genero">¡Cine Total: Todas las películas, en un solo lugar!</h1>
+            <div class="row row-cols-2 row-cols-sm-2 row-cols-md-3 row-cols-lg-6 g-4">
+                <?php
+                foreach ($movies as $movie) {
+                ?>
+                    <div class="col">
+                        <a href="#" class="Cartas btn card h-100">
+                            <img src="<?php echo htmlspecialchars($movie['portada']); ?>" class="card-img-top" alt="<?php echo htmlspecialchars($movie['titulo']); ?>">
+                            <div class="card-body">
+                                <h5 class="card-title"><?php echo htmlspecialchars($movie['titulo']); ?></h5>
+                            </div>
+                            <div class="card-footer">
+                                <h6>
+                                    <i class="bi bi-star-fill" style="color: yellow;"></i> Año: <?php echo htmlspecialchars($movie['año']);  ?>
+                                </h6>
+                            </div>
+                        </a>
+                    </div>
+                <?php
+                }
+                ?>
+            </div>
+        </section>
+    <?php
+    } else {
+    ?>
         <section class="Grupo_Cartas">
             <div class="contenidodeImagenes">
                 <div class="row">
@@ -103,6 +93,7 @@
                 </div>
             </div>
         </section>
+
     <?php
     }
     ?>
