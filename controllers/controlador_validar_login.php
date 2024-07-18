@@ -18,7 +18,7 @@ if (!empty($_POST["btnLogear"])) {
                                         Swal.fire({
                                             position: "top-end",
                                             icon: "success",
-                                            title: "Inicio de Sesión Exitosa!",
+                                            title: "¡Acceso concedido!",
                                             showConfirmButton: false,
                                             timer: 3000
                                         });

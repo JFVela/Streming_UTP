@@ -14,6 +14,8 @@
     <title>CineAndes</title>
     <!--ESTILOS-->
     <link rel="stylesheet" href="../assents/css/inicio.css">
+    <!--Sweet Alert-->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body>
