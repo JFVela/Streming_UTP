@@ -1,8 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php
-include '../controllers/controlador_registrar_usuario.php';
-?>
 
 <head>
     <meta charset="utf-8">
@@ -23,15 +20,10 @@ include '../controllers/controlador_registrar_usuario.php';
 </head>
 
 <body>
-
     <!--Header-->
     <?php
     include "../includes/header.php";
     ?>
-
-    <div id="mensajeFinal" class="form-outline mb-4">
-        <?php echo isset($mensaje) ? $mensaje : ''; ?>
-    </div>
 
     <!--End Header-->
     <div class="d-flex flex-column min-vh-100">
@@ -99,6 +91,7 @@ include '../controllers/controlador_registrar_usuario.php';
         </section>
         <!--Footer-->
         <?php
+        include '../controllers/controlador_registrar_usuario.php';
         include "../includes/footer.php";
         ?>
     </div>

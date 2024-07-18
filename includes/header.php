@@ -15,7 +15,7 @@ include '../controllers/controlador_validar_login.php';
                         <a class="nav-link" href="../views/inicio.php">Inicio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/views/recomendaciones.php">Cine Total</a>
+                        <a class="nav-link" href="/views/cineTotal.php">Cine Total</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Categoria</a>
@@ -35,8 +35,8 @@ include '../controllers/controlador_validar_login.php';
                         <a class="nav-link disabled">Gracias por preferirnos!</a>
                     </li>
                 </ul>
-                <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
-                    <input type="search" class="form-control form-control-dark" placeholder="Buscar..." aria-label="Buscar">
+                <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search" action="/views/busqueda.php" method="GET">
+                    <input type="search" class="form-control form-control-dark" placeholder="Busca palabra clave..." aria-label="Buscar" name="consulta" required>
                 </form>
             </div>
             <div class="d-flex align-items-center">
@@ -45,7 +45,7 @@ include '../controllers/controlador_validar_login.php';
                 </button>
                 <?php
                 if (isset($_SESSION["idUsuario"])) {
-                    $saludo ="Hola! " .$_SESSION["nombre_Usuario"] ;
+                    $saludo = "Hola! " . $_SESSION["nombre_Usuario"];
                     echo '<div class="dropdown text-end">
                             <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
                                 <img class="perfil" src="/assents/imag/avatar/user1.jpg" alt="mdo" width="40" height="40" class="rounded-circle">

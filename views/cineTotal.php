@@ -18,7 +18,6 @@
     <link rel="icon" type="image/png" href="/assents/imag/favicon/cine.png">
     <!--ESTILOS-->
     <link rel="stylesheet" href="../assents/css/inicio.css">
-    <link rel="stylesheet" href="../assents/css/cineTotal.css">
 </head>
 
 <body>
@@ -30,12 +29,11 @@
     <!--FIN HEADER-->
 
     <!--Mostrar toda las peliculas-->
-    <?php
-    include "../controllers/obtenerCineTotal.php";
-
-    if (isset($_SESSION['idUsuario'])) {
-    ?>
-        <section class="Grupo_Cartas">
+    <section class="Grupo_Cartas">
+        <?php
+        if (isset($_SESSION['idUsuario'])) {
+            include "../controllers/obtenerCineTotal.php";
+        ?>
             <h1 class="Titulo_genero">¡Cine Total: Todas las películas, en un solo lugar!</h1>
             <div class="row row-cols-2 row-cols-sm-2 row-cols-md-3 row-cols-lg-6 g-4">
                 <?php
@@ -49,7 +47,7 @@
                             </div>
                             <div class="card-footer">
                                 <h6>
-                                    <i class="bi bi-star-fill" style="color: yellow;"></i> Año: <?php echo htmlspecialchars($movie['año']);  ?>
+                                    <i class="bi bi-calendar" style="color: yellow;"></i> Año: <?php echo htmlspecialchars($movie['año']);  ?>
                                 </h6>
                             </div>
                         </a>
@@ -58,46 +56,12 @@
                 }
                 ?>
             </div>
-        </section>
-    <?php
-    } else {
-    ?>
-        <section class="Grupo_Cartas">
-            <div class="contenidodeImagenes">
-                <div class="row">
-                    <div class="col-12 col-sm-6">
-                        <div class="contenedor grande">
-                            <a class="redireccion" href="inicio.php">
-                                <img src="/assents/imag/sinsesion/imagenGrande.png" alt="imagenGrande">
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-12 col-sm-6">
-                        <div class="row">
-                            <div class="col-6 col-sm-12">
-                                <div class="contenedor fila1">
-                                    <a class="redireccion" href="login.php">
-                                        <img src="/assents/imag/sinsesion/iniciarSesion.png" alt="iniciarSesion">
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-6 col-sm-12">
-                                <div class="contenedor fila2">
-                                    <a class="redireccion" href="createLogin.php">
-                                        <img src="/assents/imag/sinsesion/registrar.png" alt="registrar">
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-    <?php
-    }
-    ?>
-
+        <?php
+        } else {
+            include "../includes/mensajeError.php";
+        }
+        ?>
+    </section>
 
     <!--FOOTER-->
     <?php
@@ -106,7 +70,6 @@
     <!--FIN FOOTER-->
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-
 </body>
 
 </html>

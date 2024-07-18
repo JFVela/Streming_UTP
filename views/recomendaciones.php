@@ -18,7 +18,6 @@
     <link rel="icon" type="image/png" href="/assents/imag/favicon/recomendacion.png">
     <!--ESTILOS-->
     <link rel="stylesheet" href="../assents/css/inicio.css">
-    <link rel="stylesheet" href="../assents/css/cineTotal.css">
 
 </head>
 
@@ -31,16 +30,15 @@
     <!--FIN HEADER-->
 
     <!--Mostrar Recomendaciones-->
-    <?php
-    include "../controllers/algoritmoRecomendacion.php";
-
-    if (isset($_SESSION['idUsuario'])) {
-        $idUsuario = $_SESSION['idUsuario'];
-        // Obtener y mostrar las recomendaciones para el usuario especificado
-        $recomendaciones = get_recommendations($idUsuario, $ratings, $item_similarity);
-        if (!empty($recomendaciones)) {
-    ?>
-            <section class="Grupo_Cartas">
+    <section class="Grupo_Cartas">
+        <?php
+        if (isset($_SESSION['idUsuario'])) {
+            include "../controllers/algoritmoRecomendacion.php";
+            $idUsuario = $_SESSION['idUsuario'];
+            // Obtener y mostrar las recomendaciones para el usuario especificado
+            $recomendaciones = get_recommendations($idUsuario, $ratings, $item_similarity);
+            if (!empty($recomendaciones)) {
+        ?>
                 <h1 class="Titulo_genero"><?php echo "¡Películas que te recomiendo, {$usuario_id_map[$idUsuario]}!"; ?></h1>
                 <div class="row row-cols-2 row-cols-sm-2 row-cols-md-3 row-cols-lg-6 g-4">
                     <?php
@@ -66,47 +64,15 @@
                     }
                     ?>
                 </div>
-            </section>
         <?php
+            } else {
+                echo "No hay recomendaciones disponibles para el usuario {$usuario_id_map[$idUsuario]}.";
+            }
         } else {
-            echo "No hay recomendaciones disponibles para el usuario {$usuario_id_map[$idUsuario]}.";
+            include "../includes/mensajeError.php";
         }
-    } else { ?>
-        <section class="Grupo_Cartas">
-            <div class="contenidodeImagenes">
-                <div class="row">
-                    <div class="col-12 col-sm-6">
-                        <div class="contenedor grande">
-                            <a class="redireccion" href="inicio.php">
-                                <img src="/assents/imag/sinsesion/imagenGrande.png" alt="imagenGrande">
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-12 col-sm-6">
-                        <div class="row">
-                            <div class="col-6 col-sm-12">
-                                <div class="contenedor fila1">
-                                    <a class="redireccion" href="login.php">
-                                        <img src="/assents/imag/sinsesion/iniciarSesion.png" alt="iniciarSesion">
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-6 col-sm-12">
-                                <div class="contenedor fila2">
-                                    <a class="redireccion" href="createLogin.php">
-                                        <img src="/assents/imag/sinsesion/registrar.png" alt="registrar">
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    <?php
-    }
-    ?>
-
+        ?>
+    </section>
 
     <!--FOOTER-->
     <?php

@@ -50,3 +50,83 @@
 footer {
     background-color: white;
 }
+
+
+/*ERROR NO HAY SESSCION INICIADA*/
+.contenidodeImagenes {
+    border: 8px dashed  black; 
+    margin: 1.5%;
+    background-color: rgba(250, 46, 46, 0.134);
+    border-radius: 3em 1em;
+}
+
+.contenedor {
+    padding: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.contenedor img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+.fila1,
+.fila2 {
+    height: 500px;
+}
+
+.redireccion {
+    display: inline-block;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.redireccion img {
+    border: 5px dashed  black; 
+    border-radius: 3em 1em;
+    display: block;
+    max-width: 100%;
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+.redireccion:hover {
+    border: 7px dashed  black; 
+    transform: scale(1.01);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    border-radius: 3em 1em;
+}
+
+.redireccion:hover img {
+   transform: scale(1.1);
+}
+
+
+/* Media query for 150% zoom approximation */
+@media (max-width: 1200px) {
+
+    .fila1,
+    .fila2 {
+        height: auto;
+    }
+
+    .col-sm-6 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}
+
+
+.fila1 {
+    border: 8px dashed  rgba(255, 255, 255, 0); 
+    border-radius: 3em 1em;
+}
+
+.fila2 {
+    border: 8px dashed  rgba(255, 255, 255, 0); 
+    border-radius: 3em 1em;
+}
