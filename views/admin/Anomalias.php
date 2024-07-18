@@ -18,8 +18,11 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <!-- chartjs-plugin-annotation -->
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@1.0.2"></script>
+     <!--INCLUDES-->
+     <link rel="stylesheet" href="/assents/css/includes.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Playwrite+CU:wght@100..400&display=swap');
+
         .graficas,
         .Tabla {
             margin: 5%;
@@ -38,6 +41,11 @@
 </head>
 
 <body>
+    <!--Header-->
+    <?php
+    include "../../includes/header.php";
+    echo $_SESSION["idUsuario"];
+    ?>
     <div class="Tabla">
         <h2 class="mt-5">Lista de Donaciones</h2>
         <div class="table-responsive">

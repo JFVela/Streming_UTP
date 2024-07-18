@@ -1,52 +1,71 @@
 @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
 
-        .Titulo_genero {
-            text-align: center;
-            padding-bottom: 1%;
-            font-family: "VT323", monospace;
-        }
+.Titulo_genero {
+    text-align: center;
+    padding-bottom: 1%;
+    font-family: "VT323", monospace;
+}
 
-        .Grupo_Cartas {
-            font-family: "VT323", monospace;
-            background-color: #FAEF5D;
-            font-style: normal;
-            font-weight: 400;
-            margin: 3%;
-            padding: 2%;
-            border-radius: 2em 0;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.473);
-        }
+.Grupo_Cartas {
+    font-family: "VT323", monospace;
+    background-color: #FAEF5D;
+    font-style: normal;
+    font-weight: 400;
+    margin: 3%;
+    padding: 2%;
+    border-radius: 2em 0;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.473);
+}
 
-        .card-title h2 {
-            font-size: 1.5rem;
-        }
+.card-title h2 {
+    font-size: 1.5rem;
+}
 
-        .card-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
-        .card-footer h5 {
-            margin: 0;
-        }
+.card-footer h5 {
+    margin: 0;
+}
 
-        .card-img-top {
-            height: 200px;
-            object-fit: cover;
-        }
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
+}
 
-        .Cartas {
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.473);
-            background-color: #FF004D;
-        }
+.Cartas {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.473);
+    background-color: #FF004D;
+}
 
-        .Cartas:hover {
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-            background-color: #7E2553;
-            color: white;
-        }
+.Cartas:hover {
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    background-color: #7E2553;
+    color: white;
+}
 
-        body {
-            background-color: #1D2B53;
-        }
+body {
+    background-color: #1D2B53;
+}
+
+
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Playwrite+CU:wght@100..400&display=swap');
+
+.graficas,
+.Tabla {
+    padding: 20px;
+    margin: 20px;
+    background-color: #EB455F;
+    border-radius: 20px;
+    color: black;
+}
+
+.cuerpoDonacion {
+    padding: 20px;
+    font-family: "Oswald", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+}

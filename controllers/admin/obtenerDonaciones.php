@@ -4,6 +4,8 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
+session_start();
+$valor = $_SESSION["idUsuario"];
 
 //Inner Join
 $table = <<<EOT
@@ -17,6 +19,7 @@ $table = <<<EOT
     d.fecha AS g
     FROM donación d
     INNER JOIN usuarios u ON d.id_Usuarios = u.id_Usu
+    where d.id_Usuarios = $valor
  ) temp
 EOT;
 

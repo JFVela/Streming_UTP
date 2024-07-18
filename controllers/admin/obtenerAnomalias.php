@@ -4,6 +4,9 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
+session_start();
+$valor = $_SESSION["idUsuario"];
+
 // Definir la tabla y las columnas
 $table = <<<EOT
  (
@@ -29,6 +32,7 @@ $table = <<<EOT
         ) AS stats ON d.id_Usuarios = stats.id_Usuarios
         WHERE 
         ABS((d.monto - stats.avg_monto) / stats.std_monto) > 3
+        and  d.id_Usuarios = $valor
  ) temp
 EOT;
 
