@@ -33,9 +33,19 @@ if (!empty($_POST["btnRegistrar"])) {
             if (password_verify($contraseña, $datos->contraseña)) {
                 $_SESSION["idUsuario"] = $datos->id_Usu;
                 $_SESSION["nombre_Usuario"] = $datos->nombreUsuario;
-                echo "<script>window.location.href='/views/inicio.php';</script>";
+                // Guardar mensaje de éxito en la sesión
+                $_SESSION['message'] = '<script>
+                                        Swal.fire({
+                                            position: "center",                            
+                                            imageUrl: "/assents/imag/SweetAlert/TaBien.gif",
+                                            imageAlt: "Usuario registrado con éxito",
+                                            imageWidth: 400,
+                                            title: "Gracias por registarse!",                        
+                                            showConfirmButton: false
+                                        });
+                                        </script>';
+                echo "<script>window.location.href='/views/createLogin.php';</script>";
                 die();
-                // Redireccionar al usuario después de iniciar sesión
             } else {
                 echo 'Contraseña incorrecta';
             }
@@ -44,7 +54,16 @@ if (!empty($_POST["btnRegistrar"])) {
         }
         $stmt->close();
     } else {
-        echo "<script>window.location.href='/views/inicio.php';</script>";
+        $_SESSION['message'] = '<script>
+                                    Swal.fire({
+                                        position: "center",                            
+                                        imageUrl: "/assents/imag/SweetAlert/bobEsponja.gif",
+                                        imageAlt: "error",
+                                        imageWidth: 400,
+                                        title: "Hubo un error al registrar el usuario!",
+                                    });
+                                </script>';
+        echo "<script>window.location.href='/views/createLogin.php';</script>";
         die();
     }
 
