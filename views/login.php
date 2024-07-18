@@ -14,12 +14,18 @@
     <title>Login</title>
     <!--ESTILOS-->
     <link rel="stylesheet" href="../assents/css/login.css">
+    <!--Sweet Alert-->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body>
     <!--HEADER-->
     <?php
     include "../includes/header.php";
+    if (isset($_SESSION['message'])) {
+        echo $_SESSION['message'];
+        unset($_SESSION['message']);
+    }
     ?>
     <!--FIN HEADER-->
     <div class="d-flex flex-column min-vh-100">
