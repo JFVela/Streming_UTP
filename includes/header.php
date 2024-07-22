@@ -30,6 +30,12 @@ include '../controllers/controlador_validar_login.php';
                         </ul>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="/views/donate.php">Donaciones</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/views/Anomalias.php">Historial de donación</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link disabled">Gracias por preferirnos!</a>
                     </li>
                 </ul>

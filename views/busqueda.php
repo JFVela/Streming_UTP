@@ -31,10 +31,9 @@
     <section class="Grupo_Cartas">
         <?php
         if (isset($_SESSION['idUsuario'])) {
-            echo "<h1>Resultados de Búsqueda</h1>";
-
             if (isset($_GET['consulta'])) {
                 $consulta = $_GET['consulta'];
+                echo "<h1>Resultados de Búsqueda: ".$consulta."</h1>";
                 include '../controllers/obtenerTF-IDF.php';
 
                 // Asegurarse de que la palabra clave esté definida y no vacía
