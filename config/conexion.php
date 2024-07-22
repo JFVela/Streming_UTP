@@ -1,5 +1,13 @@
 <?php
 
+/*
+//BASE DE DATOS EN LA NUBE
+$server = "b3gi50wd4cjp04rkeioh-mysql.services.clever-cloud.com"; 
+$user = "ujodavwbkvtbxg1u"; 
+$pass = "la contraseña se compra :v"; 
+$bd = "b3gi50wd4cjp04rkeioh"; 
+*/
+
 //BASE DE DATOS LOCAL
 $server = "localhost";
 $user = "root";
@@ -13,13 +21,6 @@ if ($conexion->connect_error) {
     die("Conexión fallida: " . $conexion->connect_error);
 }
 
-/*
-//BASE DE DATOS EN LA NUBE
-$server = "b3gi50wd4cjp04rkeioh-mysql.services.clever-cloud.com"; 
-$user = "ujodavwbkvtbxg1u"; 
-$pass = "sCKOdOXeu0mH8yNxoEXI"; 
-$bd = "b3gi50wd4cjp04rkeioh"; 
-*/
 
 
 
